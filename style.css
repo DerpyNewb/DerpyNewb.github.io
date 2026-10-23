@@ -1,0 +1,86 @@
+/* Direction and the reason for each choice: DESIGN.md. Shared by index.html and mods.html. */
+:root {
+  --paper: #f7f8f6; --ink: #18201c; --muted: #56625b; --line: #d5dcd7; --accent: #1d6145;
+  --sans: "Source Sans 3", Corbel, "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --paper: #101512; --ink: #e4ebe7; --muted: #9fb0a6; --line: #2a332e; --accent: #6cc596; color-scheme: dark; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 18px/1.6 var(--sans); }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.wrap {
+  max-width: 1120px; margin: 0 auto; padding-block: 72px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3 { font-weight: 600; margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(40px, 7.5vw, 80px); line-height: 1.02; }
+h2 { font-size: clamp(28px, 3.6vw, 38px); line-height: 1.1; }
+h3, .project h2 { font-size: 23px; line-height: 1.25; }
+p, dd { margin: 0; text-wrap: pretty; }
+img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 4px; }
+figure { margin: 0; display: grid; gap: 8px; align-content: start; }
+figcaption { font-size: 15px; line-height: 1.5; font-style: italic; color: var(--muted); }
+
+header { display: grid; gap: 18px; }
+.tagline { font-size: clamp(20px, 2.2vw, 23px); line-height: 1.45; max-width: 40ch; }
+.contact, .links, nav { display: flex; flex-wrap: wrap; gap: 0 22px; margin: 0; padding: 0; list-style: none;
+  font-size: 15px; line-height: 1.5; color: var(--muted); }
+.contact li { display: flex; align-items: center; overflow-wrap: anywhere; }
+.contact a, .links a, nav a { display: inline-block; padding-block: 12px; }
+nav { border-top: 1px solid var(--line); margin-top: 8px; }
+
+section { margin-top: 112px; }
+.project, .text { display: grid; gap: 14px; align-content: start; }
+.project { padding-block: 30px 34px; border-top: 1px solid var(--line); }
+.project p { max-width: 62ch; }
+.facts { font-size: 15px; line-height: 1.5; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+/* The ledger: what has been checked, and what hasn't. Filled square done, hollow square open. */
+.ledger { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px 16px; margin: 4px 0 0; max-width: 62ch; }
+.ledger dt { font-size: 15px; line-height: 1.75; font-weight: 600; white-space: nowrap; display: flex; align-items: center; gap: 8px; align-self: start; }
+.ledger dt::before { content: ""; width: 9px; height: 9px; border: 1.5px solid var(--accent); }
+.ledger dt.done::before { background: var(--accent); }
+
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 56px; }
+/* A project with a real screenshot spans both columns: the rows differ because the evidence does. */
+.shot { grid-column: 1 / -1; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 20px 48px; }
+.shot.small { grid-column: auto; grid-template-columns: 132px minmax(0, 1fr); gap: 14px 24px; }
+.stack { display: grid; gap: 28px; }
+.video .shot { padding-top: 0; border-top: 0; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); }
+
+/* Mods page: the intro is the thread through all seven, so it stays in view beside them. */
+.mods { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.9fr); gap: 32px 64px; margin-top: 64px; }
+.lede { align-self: start; display: grid; gap: 16px; }
+/* Only where the window is tall enough to show all of it (a landscape phone is not). */
+@media (min-width: 901px) and (min-height: 640px) { .lede { position: sticky; top: 32px; } }
+.lede .facts { max-width: 40ch; }
+
+/* The doorway on the main page: the mod names, each linking to its entry on mods.html. */
+.door { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 20px 56px; padding-top: 30px; border-top: 1px solid var(--line); }
+.door ul { margin: 0; padding: 0; list-style: none; columns: 2; column-gap: 32px; }
+.door li a { display: inline-block; padding-block: 10px; }
+
+footer { margin-top: 96px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: 15px; line-height: 1.6; }
+footer p { padding-top: 12px; }
+
+@media (max-width: 900px) {
+  .mods, .grid, .door { grid-template-columns: minmax(0, 1fr); }
+  .shot, .video .shot { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  body { font-size: 17px; }
+  .wrap { padding-block: 40px; }
+  section { margin-top: 72px; }
+  .mods { margin-top: 40px; }
+  .shot.small { grid-template-columns: minmax(0, 1fr); }
+  .shot.small > img { max-width: 160px; }
+  .ledger { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .ledger dd + dt { margin-top: 8px; }
+  .door ul { columns: 1; }
+  footer { margin-top: 64px; }
+}

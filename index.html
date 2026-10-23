@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yohann Mar Gayao, projects</title>
+<meta name="description" content="Data, automation and QA tools and AI video ads by Yohann Mar Gayao, with Total War: WARHAMMER III mods on their own page. Each project says what has been checked and what hasn't.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Yohann Mar Gayao</h1>
+  <p class="tagline">Data, automation and QA tools, some AI video ads, and a separate page of Total War: WARHAMMER III mods. Each project says what's been checked and what hasn't.</p>
+  <ul class="contact">
+    <li><a href="mailto:yohanng500@gmail.com">yohanng500@gmail.com</a></li>
+    <li><a href="https://github.com/DerpyNewb">github.com/DerpyNewb</a></li>
+    <li>Baguio City, Philippines</li>
+  </ul>
+  <nav aria-label="On this page">
+    <a href="#tools">Tools</a>
+    <a href="#video">Video ads</a>
+    <a href="#mods">Total War mods</a>
+  </nav>
+</header>
+
+<main>
+<section id="tools" class="stack" aria-labelledby="tools-title">
+  <h2 id="tools-title">Data, automation and other tools</h2>
+  <div class="grid">
+    <article class="project">
+      <h3>SQL Query Agent</h3>
+      <p>Ask a question in plain English. Claude writes the SQL, a Cloudflare Worker runs it against a small demo database, and the answer comes back from the real result. The model's SQL has to pass a SELECT-only check before it touches the database.</p>
+      <p class="facts">Cloudflare Worker, D1, Claude API, plain SQL</p>
+      <dl class="ledger">
+        <dt class="done">Checked</dt><dd>A test confirms the check blocks DROP, UPDATE and stacked statements and lets ordinary SELECTs through.</dd>
+        <dt>Not yet</dt><dd>Not deployed, since every question calls a paid API. The check is a keyword blocklist, not a SQL parser.</dd>
+      </dl>
+      <p class="links"><a href="https://github.com/DerpyNewb/SQL-Agent-Demo">Source on GitHub<span class="vh">: SQL Query Agent</span></a></p>
+    </article>
+
+    <article class="project">
+      <h3>Gameplay video QA</h3>
+      <p>Tools for reviewing a gameplay recording as a QA engineer. They measure freezes, black frames, scene cuts and brightness jumps on every frame, read HUD bars that show no numbers, cut labelled bug screenshots, and check that written findings point at real evidence. A Claude Code skill and a multi-agent workflow drive the review.</p>
+      <p class="facts">Python standard library, FFmpeg · MIT licence</p>
+      <dl class="ledger">
+        <dt class="done">Checked</dt><dd>Tests build videos with known defects (black, frozen and flashing stretches, a HUD bar dropping to half) and check each tool finds them at the right frame. Built for a QA take-home: an AI agent's boss fight against a reference run.</dd>
+        <dt>Not yet</dt><dd>The tests don't measure how accurate a review is.</dd>
+      </dl>
+      <p class="links"><a href="https://github.com/DerpyNewb/gameplay-video-qa">Source on GitHub<span class="vh">: Gameplay video QA</span></a></p>
+    </article>
+
+    <article class="project shot">
+      <figure>
+        <img src="img/n8n.webp" width="850" height="320" loading="lazy" alt="The workflow on the n8n canvas: form, fetch, clean, extract fields, validate, then append to the tracker or log the failure.">
+        <figcaption>The workflow imported into n8n. The red marks are nodes still waiting for Google credentials.</figcaption>
+      </figure>
+      <div class="text">
+        <h3>Job posting triage in n8n</h3>
+        <p>Paste a job posting link. n8n fetches the page, Gemini pulls out the company, role, salary and requirements, a code step checks the fields, and a row lands in a Google Sheet. Every node sends its failures to a separate tab.</p>
+        <p class="facts">n8n, Gemini, Google Sheets</p>
+        <dl class="ledger">
+          <dt class="done">Checked</dt><dd>The validation logic passes 11 checks, and the workflow imports into n8n.</dd>
+          <dt>Not yet</dt><dd>Never run against a live posting. Next up: six to eight weeks of real use with a failure log, then the same workflow in Make and Zapier to compare.</dd>
+        </dl>
+        <p class="links"><a href="https://github.com/DerpyNewb/automation-portfolio">Source on GitHub<span class="vh">: Job posting triage in n8n</span></a></p>
+      </div>
+    </article>
+
+    <article class="project shot">
+      <figure>
+        <img src="img/dashboard.webp" width="1100" height="809" loading="lazy" alt="Open, urgent and overdue counts above the maintenance queue.">
+        <figcaption>The dashboard running on its made-up sample data.</figcaption>
+      </figure>
+      <div class="text">
+        <h3>Business operations dashboard</h3>
+        <p>Staff CSV exports for a made-up property manager become one dashboard: versioned imports that turn away stale edits, assigned maintenance tasks, leasing and finance summaries, and local reminders.</p>
+        <p class="facts">Python standard library, SQLite, plain HTML, CSS and JavaScript · money kept in whole centavos</p>
+        <dl class="ledger">
+          <dt class="done">Checked</dt><dd>25 tests, an offline demo, and real clicks through the dashboard at desktop and phone width.</dd>
+          <dt>Not yet</dt><dd>Not connected to any real account or deployed anywhere, and its reminders stay in a local log instead of going out as messages.</dd>
+        </dl>
+        <p class="links"><a href="https://github.com/DerpyNewb/business-operations-dashboard">Source on GitHub<span class="vh">: Business operations dashboard</span></a></p>
+      </div>
+    </article>
+
+    <article class="project">
+      <h3>Lead-to-CRM automation</h3>
+      <p>Lead handling for the same kind of made-up property manager. An AI assessment has to quote its sources, a person approves before anything goes out, and then come the contact, a follow-up task and an optional email campaign. It handles replies, bounces and unsubscribes without redoing work that's already finished.</p>
+      <p class="facts">Python standard library, SQLite, n8n · HubSpot, Instantly and Gemini adapters</p>
+      <dl class="ledger">
+        <dt class="done">Checked</dt><dd>38 tests and an offline demo: duplicate intake, an approval, a timeout held for a person to sort out, recovery after a restart, and an unsubscribe cancelling unsent work.</dd>
+        <dt>Not yet</dt><dd>Never connected to real HubSpot or Instantly accounts. The adapters were tested against fake HTTP servers.</dd>
+      </dl>
+      <p class="links"><a href="https://github.com/DerpyNewb/lead-crm-automation">Source on GitHub<span class="vh">: Lead-to-CRM automation</span></a></p>
+    </article>
+
+    <article class="project shot small">
+      <img src="img/calculator.webp" width="322" height="492" loading="lazy" alt="The calculator showing 12+4 = 16.">
+      <div class="text">
+        <h3>Rust calculator</h3>
+        <p>A desktop calculator in Rust with egui. Operator precedence, parentheses and negative numbers, by mouse or keyboard. On Windows it's a single .exe that runs without an installer or a console window.</p>
+        <p class="facts">Rust, egui</p>
+        <dl class="ledger">
+          <dt class="done">Checked</dt><dd>cargo test covers the parser and the number formatting.</dd>
+        </dl>
+        <p class="links"><a href="https://github.com/DerpyNewb/rust-calculator">Source on GitHub<span class="vh">: Rust calculator</span></a><a href="https://github.com/DerpyNewb/rust-calculator/releases/latest">Download for Windows<span class="vh">: Rust calculator</span></a></p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="video" class="stack video" aria-labelledby="video-title">
+  <h2 id="video-title">AI video ads</h2>
+  <article class="project shot">
+    <figure>
+      <img src="img/mistline.webp" width="1280" height="720" loading="lazy" alt="Forested ridges above a sea of cloud at sunrise.">
+      <figcaption>A still from the Mistline Coffee ad.</figcaption>
+    </figure>
+    <div class="text">
+      <p>Eight spec ads for brands that don't exist, in 16:9, 9:16 and 1:1. Google Veo and Gemini Omni made the clips, Flow Music made the music, and DaVinci Resolve put each one together. Four show off a product; the others are clay stop-motion, a creator-style phone video, a little story with dialogue and a 1990s TV spot.</p>
+      <p class="facts">Every clip is AI-generated, people included. None of it is client work.</p>
+      <dl class="ledger">
+        <dt class="done">Checked</dt><dd>The live page plays all eight at desktop and phone width.</dd>
+      </dl>
+      <p class="links"><a href="https://derpynewb.github.io/ai-video-ads/">Watch the eight ads</a><a href="https://github.com/DerpyNewb/ai-video-ads">Page source on GitHub<span class="vh">: AI video ads</span></a></p>
+    </div>
+  </article>
+</section>
+
+<section id="mods" aria-labelledby="mods-title">
+  <div class="door">
+    <div class="text">
+      <h2 id="mods-title">Total War: WARHAMMER III mods</h2>
+      <p>Seven campaign and battle mods, most generated from Python and tested outside the game. They have a page of their own.</p>
+      <p class="links"><a href="mods.html">Open the mods page</a></p>
+    </div>
+    <ul>
+      <li><a href="mods.html#grand-trade-exchange">The Grand Trade Exchange</a></li>
+      <li><a href="mods.html#iron-court">The Iron Court</a></li>
+      <li><a href="mods.html#great-guilds">The Great Guilds</a></li>
+      <li><a href="mods.html#house-ancillaries">Chaos Dwarf House Ancillaries</a></li>
+      <li><a href="mods.html#third-person-battles">Third-Person Battles</a></li>
+      <li><a href="mods.html#hashut-legendary-lords">Hashut's Legendary Lords: the tools</a></li>
+      <li><a href="mods.html#resource-overhaul">Derpy Resource Overhaul</a></li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer>
+  <p>Statuses as of 23 October 2026.</p>
+  <ul class="contact">
+    <li>Yohann Mar Gayao</li>
+    <li><a href="mailto:yohanng500@gmail.com">yohanng500@gmail.com</a></li>
+    <li><a href="https://github.com/DerpyNewb">github.com/DerpyNewb</a></li>
+  </ul>
+</footer>
+
+</div>
+</body>
+</html>
