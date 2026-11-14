@@ -36,11 +36,11 @@
   <div class="grid">
     <article class="project">
       <h3>SQL Query Agent</h3>
-      <p>Ask a question in plain English. Claude writes the SQL, a Cloudflare Worker runs it against a small demo database, and the answer comes back from the real result. The model's SQL has to pass a SELECT-only check before it touches the database.</p>
+      <p>Ask a question about a small demo database in plain English. Claude writes the SQL, a Cloudflare Worker screens it against a list of blocked keywords, and the queries that pass run on D1. The model is told to answer only from the rows that come back.</p>
       <p class="facts">Cloudflare Worker, D1, Claude API, plain SQL</p>
       <dl class="ledger">
         <dt class="done">Checked</dt><dd>A test confirms the check blocks DROP, UPDATE and stacked statements and lets ordinary SELECTs through.</dd>
-        <dt>Not yet</dt><dd>Not deployed, since every question calls a paid API. The check is a keyword blocklist, not a SQL parser.</dd>
+        <dt>Not yet</dt><dd>Not deployed, and never run end to end with the model and the database together. The tests cover the SQL check, not whether the answers are right. Opening it to the public would also need sign-in and request limits.</dd>
       </dl>
       <p class="links"><a href="https://github.com/DerpyNewb/SQL-Agent-Demo">Source on GitHub<span class="vh">: SQL Query Agent</span></a></p>
     </article>
@@ -58,16 +58,33 @@
 
     <article class="project shot">
       <figure>
+        <img src="img/late-trip.webp" width="960" height="825" loading="lazy" alt="The demo at 08:20 in the sample shift. One trip needs attention because its driver has gone quiet, and the alert list shows a late pickup with a text for the rider that hasn't been sent.">
+        <figcaption>The live demo at 08:20 in the sample shift. The text for the rider waits for a dispatcher.</figcaption>
+      </figure>
+      <div class="text">
+        <h3>Late-trip monitor</h3>
+        <p>A check for medical-transport dispatch that runs every 5 minutes. It compares each driver's latest ETA with the rider's pickup window and alerts the desk that owns the trip when a pickup is at risk, late, or the driver has gone quiet. A quiet driver is never reported as late, and the text it drafts for the rider goes nowhere until a dispatcher approves it.</p>
+        <p class="facts">Python standard library, SQLite, plain JavaScript · every rider, driver and desk is made up</p>
+        <dl class="ledger">
+          <dt class="done">Checked</dt><dd>11 tests, including one that runs the Python rules and the browser copy of them on the same data and needs them to agree. In the demo you can delay a driver, silence one, approve a text or load your own CSV files.</dd>
+          <dt>Not yet</dt><dd>Not connected to a dispatch system, and it sends no messages.</dd>
+        </dl>
+        <p class="links"><a href="https://derpynewb.github.io/late-trip-monitor/">Try the demo<span class="vh">: Late-trip monitor</span></a><a href="https://github.com/DerpyNewb/late-trip-monitor">Source on GitHub<span class="vh">: Late-trip monitor</span></a></p>
+      </div>
+    </article>
+
+    <article class="project shot">
+      <figure>
         <img src="img/n8n.webp" width="850" height="320" loading="lazy" alt="The workflow on the n8n canvas: form, fetch, clean, extract fields, validate, then append to the tracker or log the failure.">
-        <figcaption>The workflow imported into n8n. The red marks are nodes still waiting for Google credentials.</figcaption>
+        <figcaption>An earlier version imported into n8n, before the freehire step was added. The red marks are nodes still waiting for Google credentials.</figcaption>
       </figure>
       <div class="text">
         <h3>Job posting triage in n8n</h3>
-        <p>Paste a job posting link. n8n fetches the page, Gemini pulls out the company, role, salary and requirements, a code step checks the fields, and a row lands in a Google Sheet. Every node sends its failures to a separate tab.</p>
+        <p>Paste a job posting link. n8n looks the posting up on freehire, or fetches the page itself when that fails. Gemini pulls out the company, role, salary and requirements, a code step checks the fields, and the result goes into a Google Sheet as a new row. Every failure lands in a separate tab.</p>
         <p class="facts">n8n, Gemini, Google Sheets</p>
         <dl class="ledger">
-          <dt class="done">Checked</dt><dd>The validation logic passes 11 checks, and the workflow imports into n8n.</dd>
-          <dt>Not yet</dt><dd>Never run against a live posting. Next up: six to eight weeks of real use with a failure log, then the same workflow in Make and Zapier to compare.</dd>
+          <dt class="done">Checked</dt><dd>The validation code passes 18 checks, and the workflow imports into n8n. A copy with only the fetch steps ran on live links, including a scrape fallback, a blocked page and freehire being down, and each took the right branch.</dd>
+          <dt>Not yet</dt><dd>The Gemini call and the Sheets write need credentials and haven't run yet. After that come weeks of real use, then the same workflow in Make and Zapier. The freehire step isn't on GitHub yet, so the repo still holds the earlier version.</dd>
         </dl>
         <p class="links"><a href="https://github.com/DerpyNewb/automation-portfolio">Source on GitHub<span class="vh">: Job posting triage in n8n</span></a></p>
       </div>
@@ -113,6 +130,22 @@
         <p class="links"><a href="https://github.com/DerpyNewb/rust-calculator">Source on GitHub<span class="vh">: Rust calculator</span></a><a href="https://github.com/DerpyNewb/rust-calculator/releases/latest">Download for Windows<span class="vh">: Rust calculator</span></a></p>
       </div>
     </article>
+
+    <article class="project shot">
+      <figure>
+        <img src="img/job-tracker.webp" width="1280" height="800" loading="lazy" alt="The tracker with a list of applications. A follow-up column on the left shows four that need attention, such as a follow-up due yesterday and an application with no reply in 20 days.">
+        <figcaption>The tracker on its sample workbook. Every company in it is made up.</figcaption>
+      </figure>
+      <div class="text">
+        <h3>Job tracker</h3>
+        <p>A Windows desktop app for keeping a log of job applications. It reads and writes the Excel workbook itself, so the workbook stays the record and Excel can still open it. The follow-up list puts what needs attention first, and jt, the same tracker as a command-line program, lets scripts make the same saves.</p>
+        <p class="facts">Rust, egui</p>
+        <dl class="ledger">
+          <dt class="done">Checked</dt><dd>cargo test covers the model, the workbook, the save checks and the screens, each rendered to an image. A save is refused while Excel has the workbook open or after it changed on disk. Every save keeps a backup and reads the file back, and the backup goes back in if anything differs.</dd>
+        </dl>
+        <p class="links"><a href="https://github.com/DerpyNewb/job-tracker">Source on GitHub<span class="vh">: Job tracker</span></a><a href="https://github.com/DerpyNewb/job-tracker/releases/latest">Download for Windows<span class="vh">: Job tracker</span></a></p>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -124,12 +157,12 @@
       <figcaption>A still from the Mistline Coffee ad.</figcaption>
     </figure>
     <div class="text">
-      <p>Eight spec ads for brands that don't exist, in 16:9, 9:16 and 1:1. Google Veo and Gemini Omni made the clips, Flow Music made the music, and DaVinci Resolve put each one together. Four show off a product; the others are clay stop-motion, a creator-style phone video, a little story with dialogue and a 1990s TV spot.</p>
+      <p>Eight spec ads for brands that don't exist, in 16:9, 9:16 and 1:1, and a series of five vertical Reels for a made-up wellness brand. Google Veo and Gemini Omni made the clips, Flow Music made the music, and DaVinci Resolve put each edit together. The styles run from product shots to a clay stop-motion look, a creator-style phone video, a short story with dialogue and a 1990s TV spot.</p>
       <p class="facts">Every clip is AI-generated, people included. None of it is client work.</p>
       <dl class="ledger">
-        <dt class="done">Checked</dt><dd>The live page plays all eight at desktop and phone width.</dd>
+        <dt class="done">Checked</dt><dd>The live page plays the eight ads and all five Reels, each with notes on how it was made.</dd>
       </dl>
-      <p class="links"><a href="https://derpynewb.github.io/ai-video-ads/">Watch the eight ads</a><a href="https://github.com/DerpyNewb/ai-video-ads">Page source on GitHub<span class="vh">: AI video ads</span></a></p>
+      <p class="links"><a href="https://derpynewb.github.io/ai-video-ads/">Watch the ads and Reels</a><a href="https://github.com/DerpyNewb/ai-video-ads">Page source on GitHub<span class="vh">: AI video ads</span></a></p>
     </div>
   </article>
 </section>
@@ -156,7 +189,7 @@
   <div class="door">
     <div class="text">
       <h2 id="mods-title">Total War: WARHAMMER III mods</h2>
-      <p>Seven campaign and battle mods, most generated from Python and tested outside the game. They have a page of their own.</p>
+      <p>Eight campaign and battle mods, most generated from Python and tested outside the game. They have a page of their own.</p>
       <p class="links"><a href="mods.html">Open the mods page</a></p>
     </div>
     <ul>
@@ -165,6 +198,7 @@
       <li><a href="mods.html#great-guilds">The Great Guilds</a></li>
       <li><a href="mods.html#house-ancillaries">Chaos Dwarf House Ancillaries</a></li>
       <li><a href="mods.html#third-person-battles">Third-Person Battles</a></li>
+      <li><a href="mods.html#artillery-on-walls">Artillery on Walls</a></li>
       <li><a href="mods.html#hashut-legendary-lords">Hashut's Legendary Lords: the tools</a></li>
       <li><a href="mods.html#resource-overhaul">Derpy Resource Overhaul</a></li>
     </ul>
@@ -173,7 +207,7 @@
 </main>
 
 <footer>
-  <p>Statuses as of 23 October 2026.</p>
+  <p>Statuses as of 14 November 2026.</p>
   <ul class="contact">
     <li>Yohann Mar Gayao</li>
     <li><a href="mailto:yohanng500@gmail.com">yohanng500@gmail.com</a></li>

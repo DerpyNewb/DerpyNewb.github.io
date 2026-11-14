@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Total War: WARHAMMER III mods, Yohann Mar Gayao</title>
-<meta name="description" content="Seven Total War: WARHAMMER III mods by Yohann Mar Gayao, most generated from Python and tested outside the game. Each one says what has been checked and what hasn't.">
+<meta name="description" content="Eight Total War: WARHAMMER III mods by Yohann Mar Gayao, most generated from Python and tested outside the game. Each one says what has been checked and what hasn't.">
 <link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,14 +16,14 @@
 
 <header>
   <h1>Total War: WARHAMMER III mods</h1>
-  <p class="tagline">Seven mods by Yohann Mar Gayao, for campaigns and battles. Each one says what's been checked and what hasn't.</p>
+  <p class="tagline">Eight mods by Yohann Mar Gayao, for campaigns and battles. Each one says what's been checked and what hasn't.</p>
   <ul class="contact">
     <li><a href="https://steamcommunity.com/id/d3rpyn3wb/myworkshopfiles/?appid=1142710">Steam Workshop</a></li>
     <li><a href="https://github.com/DerpyNewb">github.com/DerpyNewb</a></li>
     <li><a href="mailto:yohanng500@gmail.com">yohanng500@gmail.com</a></li>
   </ul>
   <nav aria-label="Site">
-    <a href="index.html">Other projects: tools and video ads</a>
+    <a href="index.html">Other projects: tools and videos</a>
   </nav>
 </header>
 
@@ -50,10 +50,9 @@
       <p>Gives the Chaos Dwarfs a court. Lords and heroes belong to parties, you seat them in fourteen offices and as governors, and every seat moves a party's share of the court and its loyalty. Let a party's loyalty run out and it secedes, taking provinces and lords to war under its own name.</p>
       <p class="facts">Python generators, Lua 5.1, .twui.xml UI · courts for Chaos Dwarf and Dwarf factions</p>
       <dl class="ledger">
-        <dt class="done">Checked</dt><dd>Playable, and tested live in Chaos Dwarf campaigns. A Lua harness runs the model, parties and panel against a stubbed campaign, plus a mutation runner.</dd>
-        <dt>Not yet</dt><dd>Not on the Steam Workshop.</dd>
+        <dt class="done">Checked</dt><dd>Playable, and tested live in Chaos Dwarf campaigns. A Lua harness runs the model, parties and panel against a stubbed campaign, plus a mutation runner. On the Steam Workshop since 2 November.</dd>
       </dl>
-      <p class="links"><a href="https://github.com/DerpyNewb/derpy-iron-court">Source on GitHub<span class="vh">: The Iron Court</span></a></p>
+      <p class="links"><a href="https://github.com/DerpyNewb/derpy-iron-court">Source on GitHub<span class="vh">: The Iron Court</span></a><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3832328087">Steam Workshop page<span class="vh">: The Iron Court</span></a></p>
     </article>
 
     <article class="project" id="great-guilds">
@@ -61,7 +60,8 @@
       <p>Seven guilds, and every faction of your race earns reputation with them just by playing: trading, fighting, researching, building. Favour buys services, bounties turn into real missions, and the AI factions of your race compete to lead each guild. Ten races take part, each with its own guild names and services.</p>
       <p class="facts">Python generators, Lua 5.1 · 95 services across the ten races</p>
       <dl class="ledger">
-        <dt class="done">Checked</dt><dd>Playable, and tested live in Chaos Dwarf and Empire campaigns. A mutation script breaks the rules 239 ways, and a harness has to catch every one.</dd>
+        <dt class="done">Checked</dt><dd>Playable, and tested live in Chaos Dwarf and Empire campaigns. A mutation script breaks the rules 284 ways, and a harness has to catch every one.</dd>
+        <dt>Not yet</dt><dd>The Warriors of Chaos version hasn't been tested in game, and no campaign has been played on two machines.</dd>
       </dl>
       <p class="links"><a href="https://github.com/DerpyNewb/derpy-great-guilds">Source on GitHub<span class="vh">: The Great Guilds</span></a><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3815248936">Steam Workshop page<span class="vh">: The Great Guilds</span></a></p>
     </article>
@@ -80,12 +80,23 @@
     <article class="project" id="third-person-battles">
       <h2>Third-Person Battles</h2>
       <p>Play one unit of a battle from behind, like an action game. F2 takes a unit, WASD walks it, the mouse swings and shoots, and a hotbar casts its abilities. F2 again hands it back.</p>
-      <p class="facts">Lua 5.1, memreader Plus · every memory address lives in one file, so a game patch turns off one feature, not the whole mod</p>
+      <p class="facts">Lua 5.1, memreader Plus · every memory address lives in one file, so a game patch that moves one turns off only the feature behind it</p>
       <dl class="ledger">
-        <dt class="done">Checked</dt><dd>A harness loads the real modules against a stubbed battle and presses keys frame by frame: 573 tests. A two-machine simulation adds 41 more. Out as a beta on the Steam Workshop.</dd>
-        <dt>Not yet</dt><dd>Multiplayer is built but hasn't been run on two real machines.</dd>
+        <dt class="done">Checked</dt><dd>A harness loads the real modules against a stubbed battle and presses keys frame by frame: 726 tests. A two-machine simulation adds 49 more. Out as a beta on the Steam Workshop.</dd>
+        <dt>Not yet</dt><dd>Players have run multiplayer on two machines since 23 October, but it hasn't been tested that way here.</dd>
       </dl>
       <p class="links"><a href="https://github.com/DerpyNewb/derpy-third-person-battles">Source on GitHub<span class="vh">: Third-Person Battles</span></a><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3822187184">Steam Workshop page<span class="vh">: Third-Person Battles</span></a></p>
+    </article>
+
+    <article class="project" id="artillery-on-walls">
+      <h2>Artillery on Walls</h2>
+      <p>Puts artillery on settlement walls in siege battles. Select a battery and right-click a wall section, as you would with infantry, and the guns climb the stairs, take the wall slots and fire from the walkway. 50 of the base game's units can go up, while guns drawn by animals stay on the ground. It switches itself off in multiplayer and on any game build it wasn't written for.</p>
+      <p class="facts">Lua 5.1, memreader Plus, a Python generator · 21 small machine-code patches to the running game</p>
+      <dl class="ledger">
+        <dt class="done">Checked</dt><dd>Every patch was measured in the running game. An x64 emulator runs each one through every path, and the generator breaks the assembly 47 ways and fails if any broken patch still passes. On the Steam Workshop.</dd>
+        <dt>Not yet</dt><dd>A cannon won't fire almost straight along its own wall. The AI is allowed to use walls, but in both tests it kept its guns on the ground.</dd>
+      </dl>
+      <p class="links"><a href="https://github.com/DerpyNewb/derpy-artillery-on-walls">Source on GitHub<span class="vh">: Artillery on Walls</span></a><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3837212899">Steam Workshop page<span class="vh">: Artillery on Walls</span></a></p>
     </article>
 
     <article class="project" id="hashut-legendary-lords">
@@ -100,19 +111,19 @@
 
     <article class="project" id="resource-overhaul">
       <h2>Derpy Resource Overhaul</h2>
-      <p>37 new trade goods, each made by the buildings the lore says would make it, and only where the lore puts it. A jungle port lands rum and pearls, and a Dwarf hold digs gromril. It needs no map edit or new start position.</p>
+      <p>41 new trade goods, each made by the buildings the lore says would make it, and only where the lore puts it. A jungle port lands rum and pearls, and a Dwarf hold digs gromril. It needs no map edit or new start position.</p>
       <p class="facts">Python generator · extra packs for Immortal Empires Expanded and the Old World campaign</p>
       <dl class="ledger">
-        <dt class="done">Checked</dt><dd>Tested in an Immortal Empires Expanded campaign over a live connection to the running game: a Salted Fish surplus traded in a vanilla trade agreement.</dd>
-        <dt>Not yet</dt><dd>Not on the Steam Workshop.</dd>
+        <dt class="done">Checked</dt><dd>Tested in Immortal Empires and Immortal Empires Expanded campaigns over a live connection to the running game, where a Salted Fish surplus traded in a vanilla trade agreement. On the Steam Workshop, with both extra packs.</dd>
+        <dt>Not yet</dt><dd>The Old World and Realm of Chaos campaigns with the trade roads, and multiplayer on two machines.</dd>
       </dl>
-      <p class="links"><a href="https://github.com/DerpyNewb/derpy-resource-overhaul">Source on GitHub<span class="vh">: Derpy Resource Overhaul</span></a></p>
+      <p class="links"><a href="https://github.com/DerpyNewb/derpy-resource-overhaul">Source on GitHub<span class="vh">: Derpy Resource Overhaul</span></a><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3833299348">Steam Workshop page<span class="vh">: Derpy Resource Overhaul</span></a></p>
     </article>
   </div>
 </main>
 
 <footer>
-  <p>Statuses as of 23 October 2026.</p>
+  <p>Statuses as of 14 November 2026.</p>
   <ul class="contact">
     <li><a href="index.html">Yohann Mar Gayao, other projects</a></li>
     <li><a href="mailto:yohanng500@gmail.com">yohanng500@gmail.com</a></li>

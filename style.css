@@ -1,10 +1,10 @@
 /* Direction and the reason for each choice: DESIGN.md. Shared by index.html and mods.html. */
 :root {
-  --paper: #f7f8f6; --ink: #18201c; --muted: #56625b; --line: #d5dcd7; --accent: #1d6145;
+  --paper: #f7f7f7; --ink: #1b1b1d; --muted: #5c5d61; --line: #d9d9dc; --accent: #2448c8;
   --sans: "Source Sans 3", Corbel, "Segoe UI", system-ui, sans-serif;
 }
 @media (prefers-color-scheme: dark) {
-  :root { --paper: #101512; --ink: #e4ebe7; --muted: #9fb0a6; --line: #2a332e; --accent: #6cc596; color-scheme: dark; }
+  :root { --paper: #18191b; --ink: #eff0f1; --muted: #a9adb3; --line: #3a3d42; --accent: #9db4ff; color-scheme: dark; }
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--paper); color: var(--ink); font: 18px/1.6 var(--sans); }
