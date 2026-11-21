@@ -34,6 +34,23 @@
 <section id="tools" class="stack" aria-labelledby="tools-title">
   <h2 id="tools-title">Data, automation and other tools</h2>
   <div class="grid">
+    <article class="project shot wide">
+      <figure>
+        <img src="img/inbox-triage.webp" width="3400" height="490" loading="lazy" alt="The demo run in n8n, left to right. Two mailboxes of sample emails merge into 16 items, which are sorted and redacted, and 12 go to Gemini. The main Gemini model shows an error and the fallback model shows 12 calls. All 16 then reach Update tracker, and the run finishes.">
+        <figcaption>The demo run on 21 November 2026 with 16 sample emails. The main model was unavailable for the whole run, so the fallback model answered.</figcaption>
+      </figure>
+      <div class="text">
+        <h3>Inbox triage</h3>
+        <p>An n8n workflow that reads a job seeker's Gmail twice a day and keeps a job tracker up to date. Promotions are skipped, and security and money mail never reaches the model. The rest has its links, addresses, phone numbers and codes stripped out before Gemini sorts it and quotes the sentence that shows why. Rows change through jt, the job tracker's command-line program. Offers, spam, look-alike senders and anything uncertain go to a review list instead.</p>
+        <p class="facts">n8n, Gemini, Node.js standard library · the demo runs on 16 made-up emails and needs only a Google AI Studio API key</p>
+        <dl class="ledger">
+          <dt class="done">Checked</dt><dd>14 tests, including a prompt-injection email from a look-alike domain that changes nothing. Asked directly, Gemini sorted all 16 sample emails correctly. In the n8n run above, 11 of the 12 emails sent to the model were handled as expected. The twelfth got no answer from either model, so it was marked failed, and the next run picked it up.</dd>
+          <dt>Not yet</dt><dd>It hasn't read a real inbox. That needs a Gmail sign-in, and the numbers that matter, such as the success rate and accuracy on real mail, come after a few weeks of use.</dd>
+        </dl>
+        <p class="links"><a href="https://github.com/DerpyNewb/inbox-triage">Source on GitHub<span class="vh">: Inbox triage</span></a></p>
+      </div>
+    </article>
+
     <article class="project">
       <h3>SQL Query Agent</h3>
       <p>Ask a question about a small demo database in plain English. Claude writes the SQL, a Cloudflare Worker screens it against a list of blocked keywords, and the queries that pass run on D1. The model is told to answer only from the rows that come back.</p>
