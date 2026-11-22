@@ -1,88 +1,119 @@
 /* Direction and the reason for each choice: DESIGN.md. Shared by index.html and mods.html. */
+/* Night mode only (owner's call, 2026-11-22): the dark greys are the only theme. */
 :root {
-  --paper: #f7f7f7; --ink: #1b1b1d; --muted: #5c5d61; --line: #d9d9dc; --accent: #2448c8;
+  --paper: #18191b; --card: #202124; --ink: #eff0f1; --muted: #a9adb3; --line: #3a3d42; --accent: #9db4ff;
   --sans: "Source Sans 3", Corbel, "Segoe UI", system-ui, sans-serif;
-}
-@media (prefers-color-scheme: dark) {
-  :root { --paper: #18191b; --ink: #eff0f1; --muted: #a9adb3; --line: #3a3d42; --accent: #9db4ff; color-scheme: dark; }
+  color-scheme: dark;
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--paper); color: var(--ink); font: 18px/1.6 var(--sans); }
 a { color: var(--accent); text-underline-offset: 3px; }
 a:hover { text-decoration-thickness: 2px; }
-a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
 .vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .wrap {
-  max-width: 1120px; margin: 0 auto; padding-block: 72px 64px;
+  max-width: 1180px; margin: 0 auto; padding-block: 56px 64px;
   padding-left: max(16px, env(safe-area-inset-left, 0px));
   padding-right: max(16px, env(safe-area-inset-right, 0px));
 }
 h1, h2, h3 { font-weight: 600; margin: 0; text-wrap: balance; }
-h1 { font-size: clamp(40px, 7.5vw, 80px); line-height: 1.02; }
-h2 { font-size: clamp(28px, 3.6vw, 38px); line-height: 1.1; }
-h3, .project h2 { font-size: 23px; line-height: 1.25; }
+h1 { font-size: clamp(40px, 6.5vw, 72px); line-height: 1.02; }
+h2 { font-size: clamp(26px, 3.2vw, 34px); line-height: 1.1; }
+h3, .project h2 { font-size: 21px; line-height: 1.25; }
 p, dd { margin: 0; text-wrap: pretty; }
-img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 4px; }
-figure { margin: 0; display: grid; gap: 8px; align-content: start; }
-figcaption { font-size: 15px; line-height: 1.5; font-style: italic; color: var(--muted); }
+img { display: block; width: 100%; height: auto; }
 
 header { display: grid; gap: 18px; }
-.tagline { font-size: clamp(20px, 2.2vw, 23px); line-height: 1.45; max-width: 40ch; }
+.tagline { font-size: clamp(19px, 2vw, 22px); line-height: 1.45; max-width: 44ch; }
 .contact, .links, nav { display: flex; flex-wrap: wrap; gap: 0 22px; margin: 0; padding: 0; list-style: none;
   font-size: 15px; line-height: 1.5; color: var(--muted); }
 .contact li { display: flex; align-items: center; overflow-wrap: anywhere; }
 .contact a, .links a, nav a { display: inline-block; padding-block: 12px; }
-nav { border-top: 1px solid var(--line); margin-top: 8px; }
-
-section { margin-top: 112px; }
-.project, .text { display: grid; gap: 14px; align-content: start; }
-.project { padding-block: 30px 34px; border-top: 1px solid var(--line); }
-.project p { max-width: 62ch; }
 .facts { font-size: 15px; line-height: 1.5; color: var(--muted); font-variant-numeric: tabular-nums; }
 
-/* The ledger: what has been checked, and what hasn't. Filled square done, hollow square open. */
+/* Main page header: the name and what the work is beside the contact details, in one band. */
+header.top { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 16px 56px; align-items: end;
+  padding-bottom: 32px; border-bottom: 1px solid var(--line); }
+header.top .tagline { margin-top: 16px; }
+header.top .contact { display: grid; gap: 0; }
+header.top .contact a { padding-block: 6px; }
+
+section { margin-top: 72px; }
+.head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 24px; margin-bottom: 20px; }
+.head p { color: var(--muted); font-size: 15px; max-width: 52ch; }
+
+/* Cards: the picture first, then one plain sentence, then the checks on request. */
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; overflow: hidden;
+  display: grid; grid-template-rows: auto 1fr; font-size: 17px; }
+.card .pic { aspect-ratio: 16 / 10; background: var(--paper); border-bottom: 1px solid var(--line); overflow: hidden; }
+.card .pic img { width: 100%; height: 100%; object-fit: cover; object-position: top left; }
+.card .pic.contain img { object-fit: contain; padding: 12px; }
+.card .body { padding: 18px 20px 20px; display: grid; gap: 10px; align-content: start; }
+.card .links { margin-top: 2px; }
+.card .links a { padding-block: 8px; }
+.span2 { grid-column: span 2; }
+
+/* Start here: three wide cards, the work a hiring manager should see first. */
+.featured { display: grid; gap: 20px; }
+.featured .card { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); grid-template-rows: none; }
+.featured .card .pic { aspect-ratio: auto; height: 100%; min-height: 260px; border-bottom: 0; border-right: 1px solid var(--line); }
+.featured .card:nth-child(2) { grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); }
+.featured .card:nth-child(2) .pic { order: 2; border-right: 0; border-left: 1px solid var(--line); }
+.featured .body { padding: 28px; align-content: center; }
+.featured h3 { font-size: 26px; }
+.featured .say { font-size: 18px; }
+
+/* The ledger folded under each card. Filled square checked, hollow square not yet. */
+details { border-top: 1px solid var(--line); margin-top: 6px; padding-top: 4px; font-size: 15px; }
+summary { cursor: pointer; padding-block: 8px; color: var(--muted); list-style: none; display: flex; gap: 10px; align-items: center; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; margin-left: auto; font-size: 18px; line-height: 1; }
+details[open] summary::after { content: "\2212"; }
+.marks { display: inline-flex; gap: 4px; }
+.marks i { width: 9px; height: 9px; border: 1.5px solid var(--accent); }
+.marks i.done { background: var(--accent); }
+details dl { display: grid; gap: 4px; margin: 4px 0 6px; }
+details dt { font-weight: 600; }
+details dd { margin: 0 0 8px; }
+
+/* Mod names on the main page, each linking to its entry on mods.html. */
+.modlist { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 20px; margin: 0; padding: 0;
+  list-style: none; border-top: 1px solid var(--line); }
+.modlist li { border-bottom: 1px solid var(--line); }
+.modlist a { display: block; padding: 14px 0; }
+
+/* Mods page: the open ledger, a project per row. */
+.project { display: grid; gap: 14px; align-content: start; padding-block: 30px 34px; border-top: 1px solid var(--line); }
+.project p { max-width: 62ch; }
 .ledger { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px 16px; margin: 4px 0 0; max-width: 62ch; }
 .ledger dt { font-size: 15px; line-height: 1.75; font-weight: 600; white-space: nowrap; display: flex; align-items: center; gap: 8px; align-self: start; }
 .ledger dt::before { content: ""; width: 9px; height: 9px; border: 1.5px solid var(--accent); }
 .ledger dt.done::before { background: var(--accent); }
 
-.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 56px; }
-/* A project with a real screenshot spans both columns: the rows differ because the evidence does. */
-.shot { grid-column: 1 / -1; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 20px 48px; }
-.shot.small { grid-column: auto; grid-template-columns: 132px minmax(0, 1fr); gap: 14px 24px; }
-/* A long n8n canvas reads only at full width, so its text sits underneath. */
-.shot.wide { grid-template-columns: minmax(0, 1fr); }
-.stack { display: grid; gap: 28px; }
-.video .shot { padding-top: 0; border-top: 0; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); }
-
-/* Mods page: the intro is the thread through all seven, so it stays in view beside them. */
+/* Mods page: the intro is the thread through all eight, so it stays in view beside them. */
 .mods { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.9fr); gap: 32px 64px; margin-top: 64px; }
 .lede { align-self: start; display: grid; gap: 16px; }
 /* Only where the window is tall enough to show all of it (a landscape phone is not). */
 @media (min-width: 901px) and (min-height: 640px) { .lede { position: sticky; top: 32px; } }
 .lede .facts { max-width: 40ch; }
 
-/* The doorway on the main page: the mod names, each linking to its entry on mods.html. */
-.door { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 20px 56px; padding-top: 30px; border-top: 1px solid var(--line); }
-.door ul { margin: 0; padding: 0; list-style: none; columns: 2; column-gap: 32px; }
-.door li a { display: inline-block; padding-block: 10px; }
-
-footer { margin-top: 96px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: 15px; line-height: 1.6; }
+footer { margin-top: 80px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 15px; line-height: 1.6; }
 footer p { padding-top: 12px; }
 
-@media (max-width: 900px) {
-  .mods, .grid, .door { grid-template-columns: minmax(0, 1fr); }
-  .shot, .video .shot { grid-template-columns: minmax(0, 1fr); }
+@media (max-width: 960px) {
+  header.top, .mods, .featured .card, .featured .card:nth-child(2) { grid-template-columns: minmax(0, 1fr); }
+  .featured .card .pic, .featured .card:nth-child(2) .pic { order: 0; border: 0; border-bottom: 1px solid var(--line); min-height: 0; aspect-ratio: 16 / 10; }
+  .cards, .modlist { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 640px) {
   body { font-size: 17px; }
-  .wrap { padding-block: 40px; }
-  section { margin-top: 72px; }
+  .wrap { padding-block: 36px 40px; }
+  section { margin-top: 56px; }
   .mods { margin-top: 40px; }
-  .shot.small { grid-template-columns: minmax(0, 1fr); }
-  .shot.small > img { max-width: 160px; }
+  .cards, .modlist { grid-template-columns: minmax(0, 1fr); }
+  .span2 { grid-column: auto; }
+  .featured .body { padding: 20px; }
   .ledger { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .ledger dd + dt { margin-top: 8px; }
-  .door ul { columns: 1; }
-  footer { margin-top: 64px; }
 }

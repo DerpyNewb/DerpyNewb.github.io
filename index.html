@@ -13,213 +13,156 @@
 </head>
 <body>
 <div class="wrap">
-
-<header>
-  <h1>Yohann Mar Gayao</h1>
-  <p class="tagline">Data, automation and QA tools, AI video ads, explainer videos cut by code, and a separate page of Total War: WARHAMMER III mods. Each project says what's been checked and what hasn't.</p>
-  <ul class="contact">
-    <li><a href="mailto:yohanng500@gmail.com">yohanng500@gmail.com</a></li>
-    <li><a href="https://github.com/DerpyNewb">github.com/DerpyNewb</a></li>
-    <li>Baguio City, Philippines</li>
-  </ul>
-  <nav aria-label="On this page">
-    <a href="#tools">Tools</a>
-    <a href="#video">Video ads</a>
-    <a href="#editing">Video editing</a>
-    <a href="#mods">Total War mods</a>
-  </nav>
+<header class="top">
+  <div>
+    <h1>Yohann Mar Gayao</h1>
+    <p class="tagline">Data, automation and QA tools, and videos made with code.</p>
+  </div>
+  <div>
+    <ul class="contact">
+      <li><a href="mailto:yohanng500@gmail.com">yohanng500@gmail.com</a></li>
+      <li><a href="https://github.com/DerpyNewb">github.com/DerpyNewb</a></li>
+      <li>Baguio City, Philippines</li>
+    </ul>
+    <nav aria-label="On this page"><a href="#tools">Tools</a><a href="#video">Video</a><a href="#mods">Total War mods</a></nav>
+  </div>
 </header>
 
 <main>
-<section id="tools" class="stack" aria-labelledby="tools-title">
-  <h2 id="tools-title">Data, automation and other tools</h2>
-  <div class="grid">
-    <article class="project shot wide">
-      <figure>
-        <img src="img/inbox-triage.webp" width="3400" height="490" loading="lazy" alt="The demo run in n8n, left to right. Two mailboxes of sample emails merge into 16 items, which are sorted and redacted, and 12 go to Gemini. The main Gemini model shows an error and the fallback model shows 12 calls. All 16 then reach Update tracker, and the run finishes.">
-        <figcaption>The demo run on 21 November 2026 with 16 sample emails. The main model was unavailable for the whole run, so the fallback model answered.</figcaption>
-      </figure>
-      <div class="text">
-        <h3>Inbox triage</h3>
-        <p>An n8n workflow that reads a job seeker's Gmail twice a day and keeps a job tracker up to date. Promotions are skipped, and security and money mail never reaches the model. The rest has its links, addresses, phone numbers and codes stripped out before Gemini sorts it and quotes the sentence that shows why. Rows change through jt, the job tracker's command-line program. Offers, spam, look-alike senders and anything uncertain go to a review list instead.</p>
-        <p class="facts">n8n, Gemini, Node.js standard library · the demo runs on 16 made-up emails and needs only a Google AI Studio API key</p>
-        <dl class="ledger">
-          <dt class="done">Checked</dt><dd>14 tests, including a prompt-injection email from a look-alike domain that changes nothing. Asked directly, Gemini sorted all 16 sample emails correctly. In the n8n run above, 11 of the 12 emails sent to the model were handled as expected. The twelfth got no answer from either model, so it was marked failed, and the next run picked it up.</dd>
-          <dt>Not yet</dt><dd>It hasn't read a real inbox. That needs a Gmail sign-in, and the numbers that matter, such as the success rate and accuracy on real mail, come after a few weeks of use.</dd>
-        </dl>
-        <p class="links"><a href="https://github.com/DerpyNewb/inbox-triage">Source on GitHub<span class="vh">: Inbox triage</span></a></p>
-      </div>
-    </article>
-
-    <article class="project">
-      <h3>SQL Query Agent</h3>
-      <p>Ask a question about a small demo database in plain English. Claude writes the SQL, a Cloudflare Worker screens it against a list of blocked keywords, and the queries that pass run on D1. The model is told to answer only from the rows that come back.</p>
-      <p class="facts">Cloudflare Worker, D1, Claude API, plain SQL</p>
-      <dl class="ledger">
-        <dt class="done">Checked</dt><dd>A test confirms the check blocks DROP, UPDATE and stacked statements and lets ordinary SELECTs through.</dd>
-        <dt>Not yet</dt><dd>Not deployed, and never run end to end with the model and the database together. The tests cover the SQL check, not whether the answers are right. Opening it to the public would also need sign-in and request limits.</dd>
-      </dl>
-      <p class="links"><a href="https://github.com/DerpyNewb/SQL-Agent-Demo">Source on GitHub<span class="vh">: SQL Query Agent</span></a></p>
-    </article>
-
-    <article class="project">
-      <h3>Gameplay video QA</h3>
-      <p>Tools for reviewing a gameplay recording as a QA engineer. They measure freezes, black frames, scene cuts and brightness jumps on every frame, read HUD bars that show no numbers, cut labelled bug screenshots, and check that written findings point at real evidence. A Claude Code skill and a multi-agent workflow drive the review.</p>
-      <p class="facts">Python standard library, FFmpeg · MIT licence</p>
-      <dl class="ledger">
-        <dt class="done">Checked</dt><dd>Tests build videos with known defects (black, frozen and flashing stretches, a HUD bar dropping to half) and check each tool finds them at the right frame. Built for a QA take-home: an AI agent's boss fight against a reference run.</dd>
-        <dt>Not yet</dt><dd>The tests don't measure how accurate a review is.</dd>
-      </dl>
-      <p class="links"><a href="https://github.com/DerpyNewb/gameplay-video-qa">Source on GitHub<span class="vh">: Gameplay video QA</span></a></p>
-    </article>
-
-    <article class="project shot">
-      <figure>
-        <img src="img/late-trip.webp" width="960" height="825" loading="lazy" alt="The demo at 08:20 in the sample shift. One trip needs attention because its driver has gone quiet, and the alert list shows a late pickup with a text for the rider that hasn't been sent.">
-        <figcaption>The live demo at 08:20 in the sample shift. The text for the rider waits for a dispatcher.</figcaption>
-      </figure>
-      <div class="text">
+<section aria-labelledby="start-title">
+  <div class="head"><h2 id="start-title">Start here</h2><p>The three projects to look at first: one live demo, nine videos and one workflow run on sample mail.</p></div>
+  <div class="featured">
+    <article class="card">
+      <div class="pic"><img src="img/late-trip.webp" width="960" height="825" alt="The demo at 08:20 in the sample shift. One trip needs attention because its driver has gone quiet, and the alert list shows a late pickup with a text for the rider that hasn't been sent."></div>
+      <div class="body">
         <h3>Late-trip monitor</h3>
-        <p>A check for medical-transport dispatch that runs every 5 minutes. It compares each driver's latest ETA with the rider's pickup window and alerts the desk that owns the trip when a pickup is at risk, late, or the driver has gone quiet. A quiet driver is never reported as late, and the text it drafts for the rider goes nowhere until a dispatcher approves it.</p>
-        <p class="facts">Python standard library, SQLite, plain JavaScript · every rider, driver and desk is made up</p>
-        <dl class="ledger">
-          <dt class="done">Checked</dt><dd>11 tests, including one that runs the Python rules and the browser copy of them on the same data and needs them to agree. In the demo you can delay a driver, silence one, approve a text or load your own CSV files.</dd>
-          <dt>Not yet</dt><dd>Not connected to a dispatch system, and it sends no messages.</dd>
-        </dl>
-        <p class="links"><a href="https://derpynewb.github.io/late-trip-monitor/">Try the demo<span class="vh">: Late-trip monitor</span></a><a href="https://github.com/DerpyNewb/late-trip-monitor">Source on GitHub<span class="vh">: Late-trip monitor</span></a></p>
+        <p class="say">Warns a medical-transport dispatch desk when a pickup is at risk, late, or the driver has gone quiet. A quiet driver is never reported as late.</p>
+        <p class="facts">Python standard library, SQLite, plain JavaScript</p>
+        <p class="links"><a href="https://derpynewb.github.io/late-trip-monitor/">Try the demo<span class="vh">: Late-trip monitor</span></a><a href="https://github.com/DerpyNewb/late-trip-monitor">Source<span class="vh">: Late-trip monitor</span></a></p>
+        <details><summary><span class="marks"><i class="done"></i><i></i></span>What's checked</summary><dl>
+          <dt>Checked</dt><dd>11 tests, including one that runs the Python rules and the browser copy of them on the same data and needs them to agree.</dd>
+          <dt>Not yet</dt><dd>Not connected to a dispatch system, and it sends no messages.</dd></dl></details>
       </div>
     </article>
-
-    <article class="project shot">
-      <figure>
-        <img src="img/n8n.webp" width="850" height="320" loading="lazy" alt="The workflow on the n8n canvas: form, fetch, clean, extract fields, validate, then append to the tracker or log the failure.">
-        <figcaption>An earlier version imported into n8n, before the freehire step was added. The red marks are nodes still waiting for Google credentials.</figcaption>
-      </figure>
-      <div class="text">
-        <h3>Job posting triage in n8n</h3>
-        <p>Paste a job posting link. n8n looks the posting up on freehire, or fetches the page itself when that fails. Gemini pulls out the company, role, salary and requirements, a code step checks the fields, and the result goes into a Google Sheet as a new row. Every failure lands in a separate tab.</p>
-        <p class="facts">n8n, Gemini, Google Sheets</p>
-        <dl class="ledger">
-          <dt class="done">Checked</dt><dd>The validation code passes 18 checks, and the workflow imports into n8n. A copy with only the fetch steps ran on live links, including a scrape fallback, a blocked page and freehire being down, and each took the right branch.</dd>
-          <dt>Not yet</dt><dd>The Gemini call and the Sheets write need credentials and haven't run yet. After that come weeks of real use, then the same workflow in Make and Zapier. The freehire step isn't on GitHub yet, so the repo still holds the earlier version.</dd>
-        </dl>
-        <p class="links"><a href="https://github.com/DerpyNewb/automation-portfolio">Source on GitHub<span class="vh">: Job posting triage in n8n</span></a></p>
+    <article class="card">
+      <div class="pic"><img src="img/editing.webp" width="1280" height="720" alt="A photo of the Great Pyramid beside a drawn panel that reads Height when new, 146.6 m, above a triangle."></div>
+      <div class="body">
+        <h3>Programmatic video editing</h3>
+        <p class="say">Nine narrated explainers with no AI video. Code places every cut and graphic by the narrator's word timings, and six battles are animated in Blender and Unreal Engine.</p>
+        <p class="facts">Python, Manim, FFmpeg, Blender, Unreal Engine, Remotion</p>
+        <p class="links"><a href="https://derpynewb.github.io/programmatic-video-editing/">Watch the nine videos</a><a href="https://github.com/DerpyNewb/programmatic-video-editing">Source<span class="vh">: Programmatic video editing</span></a></p>
+        <details><summary><span class="marks"><i class="done"></i></span>What's checked</summary><dl>
+          <dt>Checked</dt><dd>Every figure on screen has a recorded source, and Whisper heard every narrated word in each final mix.</dd></dl></details>
       </div>
     </article>
-
-    <article class="project shot">
-      <figure>
-        <img src="img/dashboard.webp" width="1100" height="809" loading="lazy" alt="Open, urgent and overdue counts above the maintenance queue.">
-        <figcaption>The dashboard running on its made-up sample data.</figcaption>
-      </figure>
-      <div class="text">
-        <h3>Business operations dashboard</h3>
-        <p>Staff CSV exports for a made-up property manager become one dashboard: versioned imports that turn away stale edits, assigned maintenance tasks, leasing and finance summaries, and local reminders.</p>
-        <p class="facts">Python standard library, SQLite, plain HTML, CSS and JavaScript · money kept in whole centavos</p>
-        <dl class="ledger">
-          <dt class="done">Checked</dt><dd>25 tests, an offline demo, and real clicks through the dashboard at desktop and phone width.</dd>
-          <dt>Not yet</dt><dd>Not connected to any real account or deployed anywhere, and its reminders stay in a local log instead of going out as messages.</dd>
-        </dl>
-        <p class="links"><a href="https://github.com/DerpyNewb/business-operations-dashboard">Source on GitHub<span class="vh">: Business operations dashboard</span></a></p>
-      </div>
-    </article>
-
-    <article class="project">
-      <h3>Lead-to-CRM automation</h3>
-      <p>Lead handling for the same kind of made-up property manager. An AI assessment has to quote its sources, a person approves before anything goes out, and then come the contact, a follow-up task and an optional email campaign. It handles replies, bounces and unsubscribes without redoing work that's already finished.</p>
-      <p class="facts">Python standard library, SQLite, n8n · HubSpot, Instantly and Gemini adapters</p>
-      <dl class="ledger">
-        <dt class="done">Checked</dt><dd>38 tests and an offline demo: duplicate intake, an approval, a timeout held for a person to sort out, recovery after a restart, and an unsubscribe cancelling unsent work.</dd>
-        <dt>Not yet</dt><dd>Never connected to real HubSpot or Instantly accounts. The adapters were tested against fake HTTP servers.</dd>
-      </dl>
-      <p class="links"><a href="https://github.com/DerpyNewb/lead-crm-automation">Source on GitHub<span class="vh">: Lead-to-CRM automation</span></a></p>
-    </article>
-
-    <article class="project shot small">
-      <img src="img/calculator.webp" width="322" height="492" loading="lazy" alt="The calculator showing 12+4 = 16.">
-      <div class="text">
-        <h3>Rust calculator</h3>
-        <p>A desktop calculator in Rust with egui. Operator precedence, parentheses and negative numbers, by mouse or keyboard. On Windows it's a single .exe that runs without an installer or a console window.</p>
-        <p class="facts">Rust, egui</p>
-        <dl class="ledger">
-          <dt class="done">Checked</dt><dd>cargo test covers the parser and the number formatting.</dd>
-        </dl>
-        <p class="links"><a href="https://github.com/DerpyNewb/rust-calculator">Source on GitHub<span class="vh">: Rust calculator</span></a><a href="https://github.com/DerpyNewb/rust-calculator/releases/latest">Download for Windows<span class="vh">: Rust calculator</span></a></p>
-      </div>
-    </article>
-
-    <article class="project shot">
-      <figure>
-        <img src="img/job-tracker.webp" width="1280" height="800" loading="lazy" alt="The tracker with a list of applications. A follow-up column on the left shows four that need attention, such as a follow-up due yesterday and an application with no reply in 20 days.">
-        <figcaption>The tracker on its sample workbook. Every company in it is made up.</figcaption>
-      </figure>
-      <div class="text">
-        <h3>Job tracker</h3>
-        <p>A Windows desktop app for keeping a log of job applications. It reads and writes the Excel workbook itself, so the workbook stays the record and Excel can still open it. The follow-up list puts what needs attention first, and jt, the same tracker as a command-line program, lets scripts make the same saves.</p>
-        <p class="facts">Rust, egui</p>
-        <dl class="ledger">
-          <dt class="done">Checked</dt><dd>cargo test covers the model, the workbook, the save checks and the screens, each rendered to an image. A save is refused while Excel has the workbook open or after it changed on disk. Every save keeps a backup and reads the file back, and the backup goes back in if anything differs.</dd>
-        </dl>
-        <p class="links"><a href="https://github.com/DerpyNewb/job-tracker">Source on GitHub<span class="vh">: Job tracker</span></a><a href="https://github.com/DerpyNewb/job-tracker/releases/latest">Download for Windows<span class="vh">: Job tracker</span></a></p>
+    <article class="card">
+      <div class="pic"><img src="img/inbox-triage.webp" width="3400" height="490" alt="The demo run in n8n: two mailboxes of sample emails merge, are sorted and redacted, go to Gemini, and reach Update tracker."></div>
+      <div class="body">
+        <h3>Inbox triage</h3>
+        <p class="say">An n8n workflow that reads a job seeker's Gmail twice a day and keeps a job tracker up to date. Anything uncertain goes to a review list.</p>
+        <p class="facts">n8n, Gemini, Node.js standard library</p>
+        <p class="links"><a href="https://github.com/DerpyNewb/inbox-triage">Source<span class="vh">: Inbox triage</span></a></p>
+        <details><summary><span class="marks"><i class="done"></i><i></i></span>What's checked</summary><dl>
+          <dt>Checked</dt><dd>14 tests, including a prompt-injection email from a look-alike domain that changes nothing. In the n8n demo run, 11 of the 12 emails sent to the model were handled as expected.</dd>
+          <dt>Not yet</dt><dd>It hasn't read a real inbox.</dd></dl></details>
       </div>
     </article>
   </div>
 </section>
 
-<section id="video" class="stack video" aria-labelledby="video-title">
-  <h2 id="video-title">AI video ads</h2>
-  <article class="project shot">
-    <figure>
-      <img src="img/mistline.webp" width="1280" height="720" loading="lazy" alt="Forested ridges above a sea of cloud at sunrise.">
-      <figcaption>A still from the Mistline Coffee ad.</figcaption>
-    </figure>
-    <div class="text">
-      <p>Eight spec ads for brands that don't exist, in 16:9, 9:16 and 1:1, and a series of five vertical Reels for a made-up wellness brand. Google Veo and Gemini Omni made the clips, Flow Music made the music, and DaVinci Resolve put each edit together. The styles run from product shots to a clay stop-motion look, a creator-style phone video, a short story with dialogue and a 1990s TV spot.</p>
-      <p class="facts">Every clip is AI-generated, people included. None of it is client work.</p>
-      <dl class="ledger">
-        <dt class="done">Checked</dt><dd>The live page plays the eight ads and all five Reels, each with notes on how it was made.</dd>
-      </dl>
-      <p class="links"><a href="https://derpynewb.github.io/ai-video-ads/">Watch the ads and Reels</a><a href="https://github.com/DerpyNewb/ai-video-ads">Page source on GitHub<span class="vh">: AI video ads</span></a></p>
-    </div>
-  </article>
+<section id="tools" aria-labelledby="tools-title">
+  <div class="head"><h2 id="tools-title">More tools</h2><p>Data, automation and desktop tools. Open "What's checked" on any card for its tests and what it hasn't done yet.</p></div>
+  <div class="cards">
+    <article class="card">
+      <div class="pic"><img src="img/dashboard.webp" loading="lazy" width="1100" height="809" alt="Open, urgent and overdue counts above the maintenance queue."></div>
+      <div class="body"><h3>Business operations dashboard</h3>
+        <p>Turns a made-up property manager's CSV exports into one dashboard for maintenance, leasing and finance.</p>
+        <p class="facts">Python standard library, SQLite, plain JavaScript</p>
+        <p class="links"><a href="https://github.com/DerpyNewb/business-operations-dashboard">Source<span class="vh">: Business operations dashboard</span></a></p>
+        <details><summary><span class="marks"><i class="done"></i><i></i></span>What's checked</summary><dl>
+          <dt>Checked</dt><dd>25 tests, an offline demo, and real clicks through the dashboard at desktop and phone width.</dd>
+          <dt>Not yet</dt><dd>Not connected to any real account or deployed anywhere.</dd></dl></details></div>
+    </article>
+    <article class="card">
+      <div class="pic"><img src="img/job-tracker.webp" loading="lazy" width="1280" height="800" alt="The tracker with a list of applications and a follow-up column showing four that need attention."></div>
+      <div class="body"><h3>Job tracker</h3>
+        <p>A Windows app that keeps a job-application log in an Excel workbook and puts follow-ups first.</p>
+        <p class="facts">Rust, egui</p>
+        <p class="links"><a href="https://github.com/DerpyNewb/job-tracker/releases/latest">Download<span class="vh">: Job tracker</span></a><a href="https://github.com/DerpyNewb/job-tracker">Source<span class="vh">: Job tracker</span></a></p>
+        <details><summary><span class="marks"><i class="done"></i></span>What's checked</summary><dl>
+          <dt>Checked</dt><dd>cargo test covers the model, the workbook, the save checks and the screens, each rendered to an image. Every save keeps a backup and reads the file back.</dd></dl></details></div>
+    </article>
+    <article class="card">
+      <div class="pic"><img src="img/n8n.webp" loading="lazy" width="850" height="320" alt="The workflow on the n8n canvas: form, fetch, clean, extract fields, validate, then append to the tracker or log the failure."></div>
+      <div class="body"><h3>Job posting triage in n8n</h3>
+        <p>Paste a job link, and Gemini pulls out the company, role, salary and requirements into a Google Sheet.</p>
+        <p class="facts">n8n, Gemini, Google Sheets</p>
+        <p class="links"><a href="https://github.com/DerpyNewb/automation-portfolio">Source<span class="vh">: Job posting triage</span></a></p>
+        <details><summary><span class="marks"><i class="done"></i><i></i></span>What's checked</summary><dl>
+          <dt>Checked</dt><dd>The validation code passes 18 checks, and the fetch steps took the right branch on live links.</dd>
+          <dt>Not yet</dt><dd>The Gemini call and the Sheets write need credentials and haven't run yet.</dd></dl></details></div>
+    </article>
+    <article class="card">
+      <div class="pic contain"><img src="img/calculator.webp" loading="lazy" width="322" height="492" alt="The calculator showing 12+4 = 16."></div>
+      <div class="body"><h3>Rust calculator</h3>
+        <p>A desktop calculator with operator precedence, parentheses and negative numbers, shipped as one .exe.</p>
+        <p class="facts">Rust, egui</p>
+        <p class="links"><a href="https://github.com/DerpyNewb/rust-calculator/releases/latest">Download<span class="vh">: Rust calculator</span></a><a href="https://github.com/DerpyNewb/rust-calculator">Source<span class="vh">: Rust calculator</span></a></p>
+        <details><summary><span class="marks"><i class="done"></i></span>What's checked</summary><dl>
+          <dt>Checked</dt><dd>cargo test covers the parser and the number formatting.</dd></dl></details></div>
+    </article>
+    <article class="card"><div class="body"><h3>SQL Query Agent</h3>
+        <p>Ask a question about a demo database in plain English. Claude writes the SQL, a Cloudflare Worker blocks anything but SELECTs, and the query runs on D1.</p>
+        <p class="facts">Cloudflare Worker, D1, Claude API, SQL</p>
+        <p class="links"><a href="https://github.com/DerpyNewb/SQL-Agent-Demo">Source<span class="vh">: SQL Query Agent</span></a></p>
+        <details><summary><span class="marks"><i class="done"></i><i></i></span>What's checked</summary><dl>
+          <dt>Checked</dt><dd>A test confirms the check blocks DROP, UPDATE and stacked statements and lets ordinary SELECTs through.</dd>
+          <dt>Not yet</dt><dd>Not deployed, and never run end to end with the model and the database together.</dd></dl></details></div>
+    </article>
+    <article class="card"><div class="body"><h3>Gameplay video QA</h3>
+        <p>Measures freezes, black frames, scene cuts and brightness jumps on every frame of a gameplay recording, and checks that bug reports point at real evidence.</p>
+        <p class="facts">Python standard library, FFmpeg, MIT licence</p>
+        <p class="links"><a href="https://github.com/DerpyNewb/gameplay-video-qa">Source<span class="vh">: Gameplay video QA</span></a></p>
+        <details><summary><span class="marks"><i class="done"></i><i></i></span>What's checked</summary><dl>
+          <dt>Checked</dt><dd>Tests build videos with known defects and check each tool finds them at the right frame.</dd>
+          <dt>Not yet</dt><dd>The tests don't measure how accurate a review is.</dd></dl></details></div>
+    </article>
+    <article class="card"><div class="body"><h3>Lead-to-CRM automation</h3>
+        <p>Lead handling for a made-up property manager. A person approves each AI assessment before the contact, task and email campaign go out.</p>
+        <p class="facts">Python standard library, SQLite, n8n, HubSpot and Instantly adapters</p>
+        <p class="links"><a href="https://github.com/DerpyNewb/lead-crm-automation">Source<span class="vh">: Lead-to-CRM automation</span></a></p>
+        <details><summary><span class="marks"><i class="done"></i><i></i></span>What's checked</summary><dl>
+          <dt>Checked</dt><dd>38 tests and an offline demo, including recovery after a restart and an unsubscribe cancelling unsent work.</dd>
+          <dt>Not yet</dt><dd>Never connected to real HubSpot or Instantly accounts.</dd></dl></details></div>
+    </article>
+  </div>
 </section>
 
-<section id="editing" class="stack video" aria-labelledby="editing-title">
-  <h2 id="editing-title">Programmatic video editing</h2>
-  <article class="project shot">
-    <figure>
-      <img src="img/editing.webp" width="1280" height="720" loading="lazy" alt="A photo of the Great Pyramid beside a drawn panel that reads Height when new, 146.6 m, above a triangle.">
-      <figcaption>A still from the Great Pyramid video. The photo is real, and the panel is drawn in code.</figcaption>
-    </figure>
-    <div class="text">
-      <p>Nine narrated explainers with no AI video: the Great Pyramid, what the SPF number means, why the sky is blue, and the Battles of Mactan, Balete Pass, Bataan, Corregidor, Irisan and Leyte. The first three are cut from openly licensed footage, photos and sound. Code written with Claude Code places every cut and graphic by the narrator's word timings, Manim draws the graphics, and FFmpeg puts each edit together. The Great Pyramid video also has a second cut built in Remotion from the same voiceover and word timings. The six battles are animated instead, over public-domain pictures, US Army maps and real terrain. Mactan and Balete Pass are flat: one storyboard file per video draws every frame in both Blender and Unreal Engine. Bataan is 3D, rendered in Blender over real elevation data, and Leyte is 3D in Unreal Engine under a physical sun, sky and clouds. Corregidor (in Unreal) and Irisan (in Blender) are flat layers set at different depths, with a camera that drifts between them. Mactan comes at 16:9 and 9:16, and the other five battles are vertical, each timed to a narration recorded first. The page prints each script with a mark at every cut or line, and picking a mark plays the video from there.</p>
-      <p class="facts">The narration is Gemini text-to-speech. None of it is client work.</p>
-      <dl class="ledger">
-        <dt class="done">Checked</dt><dd>Every figure on screen has a recorded source, and Whisper heard every narrated word in each final mix. The page was tested at phone and desktop width and by keyboard.</dd>
-      </dl>
-      <p class="links"><a href="https://derpynewb.github.io/programmatic-video-editing/">Watch the nine videos</a><a href="https://github.com/DerpyNewb/programmatic-video-editing">Page source on GitHub<span class="vh">: Programmatic video editing</span></a><a href="https://github.com/DerpyNewb/remotion-giza-explainer">Remotion source on GitHub<span class="vh">: the Great Pyramid video</span></a></p>
-    </div>
-  </article>
+<section id="video" aria-labelledby="video-title">
+  <div class="head"><h2 id="video-title">AI video ads</h2><p>Every clip is AI-generated, people included. None of it is client work.</p></div>
+  <div class="cards">
+    <article class="card span2">
+      <div class="pic"><img src="img/mistline.webp" loading="lazy" width="1280" height="720" alt="Forested ridges above a sea of cloud at sunrise."></div>
+    </article>
+    <article class="card"><div class="body"><h3>Eight spec ads and five Reels</h3>
+      <p>Ads for brands that don't exist, in 16:9, 9:16 and 1:1, made with Google Veo, Gemini Omni and Flow Music and edited in DaVinci Resolve. The styles run from product shots to clay stop-motion and a 1990s TV spot.</p>
+      <p class="links"><a href="https://derpynewb.github.io/ai-video-ads/">Watch the ads and Reels</a><a href="https://github.com/DerpyNewb/ai-video-ads">Source<span class="vh">: AI video ads</span></a></p></div>
+    </article>
+  </div>
 </section>
 
 <section id="mods" aria-labelledby="mods-title">
-  <div class="door">
-    <div class="text">
-      <h2 id="mods-title">Total War: WARHAMMER III mods</h2>
-      <p>Eight campaign and battle mods, most generated from Python and tested outside the game. They have a page of their own.</p>
-      <p class="links"><a href="mods.html">Open the mods page</a></p>
-    </div>
-    <ul>
-      <li><a href="mods.html#grand-trade-exchange">The Grand Trade Exchange</a></li>
-      <li><a href="mods.html#iron-court">The Iron Court</a></li>
-      <li><a href="mods.html#great-guilds">The Great Guilds</a></li>
-      <li><a href="mods.html#house-ancillaries">Chaos Dwarf House Ancillaries</a></li>
-      <li><a href="mods.html#third-person-battles">Third-Person Battles</a></li>
-      <li><a href="mods.html#artillery-on-walls">Artillery on Walls</a></li>
-      <li><a href="mods.html#hashut-legendary-lords">Hashut's Legendary Lords: the tools</a></li>
-      <li><a href="mods.html#resource-overhaul">Derpy Resource Overhaul</a></li>
-    </ul>
-  </div>
+  <div class="head"><h2 id="mods-title">Total War: WARHAMMER III mods</h2><p>Eight campaign and battle mods, most generated from Python and tested outside the game. <a href="mods.html">Open the mods page</a></p></div>
+  <ul class="modlist">
+    <li><a href="mods.html#grand-trade-exchange">The Grand Trade Exchange</a></li>
+    <li><a href="mods.html#iron-court">The Iron Court</a></li>
+    <li><a href="mods.html#great-guilds">The Great Guilds</a></li>
+    <li><a href="mods.html#house-ancillaries">Chaos Dwarf House Ancillaries</a></li>
+    <li><a href="mods.html#third-person-battles">Third-Person Battles</a></li>
+    <li><a href="mods.html#artillery-on-walls">Artillery on Walls</a></li>
+    <li><a href="mods.html#hashut-legendary-lords">Hashut's Legendary Lords: the tools</a></li>
+    <li><a href="mods.html#resource-overhaul">Derpy Resource Overhaul</a></li>
+  </ul>
 </section>
 </main>
 
