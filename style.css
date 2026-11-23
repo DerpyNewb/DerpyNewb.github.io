@@ -18,6 +18,7 @@ a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outli
 }
 h1, h2, h3 { font-weight: 600; margin: 0; text-wrap: balance; }
 h1 { font-size: clamp(40px, 6.5vw, 72px); line-height: 1.02; }
+h1.long { font-size: clamp(36px, 5vw, 56px); line-height: 1.05; }
 h2 { font-size: clamp(26px, 3.2vw, 34px); line-height: 1.1; }
 h3, .project h2 { font-size: 21px; line-height: 1.25; }
 p, dd { margin: 0; text-wrap: pretty; }
@@ -35,24 +36,32 @@ header { display: grid; gap: 18px; }
 header.top { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 16px 56px; align-items: end;
   padding-bottom: 32px; border-bottom: 1px solid var(--line); }
 header.top .tagline { margin-top: 16px; }
+header.top .role { margin-top: 10px; font-size: 17px; max-width: 48ch; }
 header.top .contact { display: grid; gap: 0; }
-header.top .contact a { padding-block: 6px; }
+header.top .contact a { padding-block: 11px; }
+header.top nav { margin-top: 6px; padding-top: 4px; border-top: 1px solid var(--line); }
 
 section { margin-top: 72px; }
-.head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 24px; margin-bottom: 20px; }
-.head p { color: var(--muted); font-size: 15px; max-width: 52ch; }
+.head { display: grid; gap: 8px; margin-bottom: 20px; }
+.head p { color: var(--muted); font-size: 15px; max-width: 62ch; }
 
 /* Cards: the picture first, then one plain sentence, then the checks on request. */
 .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.cards + .cards { margin-top: 20px; }
+.cards.pics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; overflow: hidden;
   display: grid; grid-template-rows: auto 1fr; font-size: 17px; }
-.card .pic { aspect-ratio: 16 / 10; background: var(--paper); border-bottom: 1px solid var(--line); overflow: hidden; }
+.card .pic { margin: 0; aspect-ratio: 16 / 10; background: var(--paper); border-bottom: 1px solid var(--line); overflow: hidden; }
 .card .pic img { width: 100%; height: 100%; object-fit: cover; object-position: top left; }
-.card .pic.contain img { object-fit: contain; padding: 12px; }
+/* Screenshots of light apps sit whole on the dark ground with a small radius, a little dimmed,
+   so they read as pictures of the app rather than white holes in the page. */
+.card .pic.ui { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 10px; padding: 16px; }
+.card .pic.ui img { width: auto; height: auto; max-width: 100%; max-height: 100%; border-radius: 4px; filter: brightness(.94); }
+.card .pic figcaption { font-size: 15px; font-style: italic; color: var(--muted); max-width: 62ch; align-self: start; }
 .card .body { padding: 18px 20px 20px; display: grid; gap: 10px; align-content: start; }
+.card .body p { max-width: 62ch; }
 .card .links { margin-top: 2px; }
-.card .links a { padding-block: 8px; }
-.span2 { grid-column: span 2; }
+.card .links a { padding-block: 11px; }
 
 /* Start here: three wide cards, the work a hiring manager should see first. */
 .featured { display: grid; gap: 20px; }
@@ -63,10 +72,13 @@ section { margin-top: 72px; }
 .featured .body { padding: 28px; align-content: center; }
 .featured h3 { font-size: 26px; }
 .featured .say { font-size: 18px; }
+/* A canvas too wide for half the card (Inbox triage's 16 nodes in a row) runs across the whole width, text below. */
+.featured .card.wide { grid-template-columns: minmax(0, 1fr); }
+.featured .card.wide .pic { min-height: 0; aspect-ratio: auto; border-right: 0; border-bottom: 1px solid var(--line); }
 
 /* The ledger folded under each card. Filled square checked, hollow square not yet. */
 details { border-top: 1px solid var(--line); margin-top: 6px; padding-top: 4px; font-size: 15px; }
-summary { cursor: pointer; padding-block: 8px; color: var(--muted); list-style: none; display: flex; gap: 10px; align-items: center; }
+summary { cursor: pointer; padding-block: 10px; color: var(--muted); list-style: none; display: flex; gap: 10px; align-items: center; }
 summary::-webkit-details-marker { display: none; }
 summary::after { content: "+"; margin-left: auto; font-size: 18px; line-height: 1; }
 details[open] summary::after { content: "\2212"; }
@@ -75,7 +87,7 @@ details[open] summary::after { content: "\2212"; }
 .marks i.done { background: var(--accent); }
 details dl { display: grid; gap: 4px; margin: 4px 0 6px; }
 details dt { font-weight: 600; }
-details dd { margin: 0 0 8px; }
+details dd { margin: 0 0 8px; max-width: 62ch; }
 
 /* Mod names on the main page, each linking to its entry on mods.html. */
 .modlist { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 20px; margin: 0; padding: 0;
@@ -105,14 +117,14 @@ footer p { padding-top: 12px; }
   header.top, .mods, .featured .card, .featured .card:nth-child(2) { grid-template-columns: minmax(0, 1fr); }
   .featured .card .pic, .featured .card:nth-child(2) .pic { order: 0; border: 0; border-bottom: 1px solid var(--line); min-height: 0; aspect-ratio: 16 / 10; }
   .cards, .modlist { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cards.trio { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 640px) {
   body { font-size: 17px; }
   .wrap { padding-block: 36px 40px; }
   section { margin-top: 56px; }
   .mods { margin-top: 40px; }
-  .cards, .modlist { grid-template-columns: minmax(0, 1fr); }
-  .span2 { grid-column: auto; }
+  .cards, .cards.pics, .modlist { grid-template-columns: minmax(0, 1fr); }
   .featured .body { padding: 20px; }
   .ledger { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .ledger dd + dt { margin-top: 8px; }

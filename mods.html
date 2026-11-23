@@ -14,9 +14,12 @@
 <body>
 <div class="wrap">
 
-<header>
-  <h1>Total War: WARHAMMER III mods</h1>
-  <p class="tagline">Eight mods by Yohann Mar Gayao, for campaigns and battles.</p>
+<header class="top">
+  <div>
+    <h1 class="long">Total War: WARHAMMER&nbsp;III mods</h1>
+    <p class="tagline">Eight mods by Yohann Mar Gayao, for campaigns and battles.</p>
+  </div>
+  <div>
   <ul class="contact">
     <li><a href="https://steamcommunity.com/id/d3rpyn3wb/myworkshopfiles/?appid=1142710">Steam Workshop</a></li>
     <li><a href="https://github.com/DerpyNewb">github.com/DerpyNewb</a></li>
@@ -25,6 +28,7 @@
   <nav aria-label="Site">
     <a href="index.html">Other projects: tools and videos</a>
   </nav>
+  </div>
 </header>
 
 <main class="mods">
@@ -38,7 +42,7 @@
     <article class="project" id="grand-trade-exchange">
       <h2>The Grand Trade Exchange</h2>
       <p>A commodities market and stock exchange for the Chaos Dwarfs. The game prices all 17 trade goods at a flat 50. Here each one moves with who makes it, who's at war and what the player keeps buying, and on top of that sit faction shares, standing orders, contracts, funds and bonds.</p>
-      <p class="facts">Python generators, Lua 5.1, .twui.xml UI · 10 DB tables, 1,643 rows, 5,402 text strings</p>
+      <p class="facts">Python generators, Lua&nbsp;5.1, .twui.xml UI · 10&nbsp;DB tables, 1,643&nbsp;rows, 5,402&nbsp;text strings</p>
       <dl class="ledger">
         <dt class="done">Checked</dt><dd>The shipped Lua runs through 20 harnesses and 87 groups of checks, including one that the Python price model and the Lua agree.</dd>
       </dl>
@@ -48,7 +52,7 @@
     <article class="project" id="iron-court">
       <h2>The Iron Court</h2>
       <p>Gives the Chaos Dwarfs a court. Lords and heroes belong to parties, you seat them in fourteen offices and as governors, and every seat moves a party's share of the court and its loyalty. Let a party's loyalty run out and it secedes, taking provinces and lords to war under its own name.</p>
-      <p class="facts">Python generators, Lua 5.1, .twui.xml UI · courts for Chaos Dwarf and Dwarf factions</p>
+      <p class="facts">Python generators, Lua&nbsp;5.1, .twui.xml UI · courts for Chaos Dwarf and Dwarf factions</p>
       <dl class="ledger">
         <dt class="done">Checked</dt><dd>Playable, and tested live in Chaos Dwarf campaigns. A Lua harness runs the model, parties and panel against a stubbed campaign, plus a mutation runner. On the Steam Workshop since 2 November.</dd>
       </dl>
@@ -58,7 +62,7 @@
     <article class="project" id="great-guilds">
       <h2>The Great Guilds</h2>
       <p>Seven guilds, and every faction of your race earns reputation with them just by playing: trading, fighting, researching, building. Favour buys services, bounties turn into real missions, and the AI factions of your race compete to lead each guild. Ten races take part, each with its own guild names and services.</p>
-      <p class="facts">Python generators, Lua 5.1 · 95 services across the ten races</p>
+      <p class="facts">Python generators, Lua&nbsp;5.1 · 95&nbsp;services across the ten races</p>
       <dl class="ledger">
         <dt class="done">Checked</dt><dd>Playable, and tested live in Chaos Dwarf and Empire campaigns. A mutation script breaks the rules 284 ways, and a harness has to catch every one.</dd>
         <dt>Not yet</dt><dd>The Warriors of Chaos version hasn't been tested in game, and no campaign has been played on two machines.</dd>
@@ -69,7 +73,7 @@
     <article class="project" id="house-ancillaries">
       <h2>Chaos Dwarf House Ancillaries</h2>
       <p>430 pieces of equipment for the Chaos Dwarf houses, and four ways to earn them: commission rites, a binding gamble, battle spoils and a conquered house's vault. 30 battle abilities were written for it rather than borrowed from the base game.</p>
-      <p class="facts">All generated from Python · 30 DB tables, 2,636 rows, 1,350 text strings</p>
+      <p class="facts">All generated from Python · 30&nbsp;DB tables, 2,636&nbsp;rows, 1,350&nbsp;text strings</p>
       <dl class="ledger">
         <dt class="done">Checked</dt><dd>Read back from 2,027 of the game's own script logs: every commission that reached its due turn delivered.</dd>
         <dt>Not yet</dt><dd>The spoils route checked 163 won battles and never met one of its fourteen houses, so nobody has seen its dice roll yet.</dd>
@@ -80,7 +84,7 @@
     <article class="project" id="third-person-battles">
       <h2>Third-Person Battles</h2>
       <p>Play one unit of a battle from behind, like an action game. F2 takes a unit, WASD walks it, the mouse swings and shoots, and a hotbar casts its abilities. F2 again hands it back.</p>
-      <p class="facts">Lua 5.1, memreader Plus · every memory address lives in one file, so a game patch that moves one turns off only the feature behind it</p>
+      <p class="facts">Lua&nbsp;5.1, memreader Plus · every memory address lives in one file, so a game patch that moves one turns off only the feature behind it</p>
       <dl class="ledger">
         <dt class="done">Checked</dt><dd>A harness loads the real modules against a stubbed battle and presses keys frame by frame: 726 tests. A two-machine simulation adds 49 more. Out as a beta on the Steam Workshop.</dd>
         <dt>Not yet</dt><dd>Players have run multiplayer on two machines since 23 October, but it hasn't been tested that way here.</dd>
@@ -91,7 +95,7 @@
     <article class="project" id="artillery-on-walls">
       <h2>Artillery on Walls</h2>
       <p>Puts artillery on settlement walls in siege battles. Select a battery and right-click a wall section, as you would with infantry, and the guns climb the stairs, take the wall slots and fire from the walkway. 50 of the base game's units can go up, while guns drawn by animals stay on the ground. It switches itself off in multiplayer and on any game build it wasn't written for.</p>
-      <p class="facts">Lua 5.1, memreader Plus, a Python generator · 21 small machine-code patches to the running game</p>
+      <p class="facts">Lua&nbsp;5.1, memreader Plus, a Python generator · 21&nbsp;small machine-code patches to the running game</p>
       <dl class="ledger">
         <dt class="done">Checked</dt><dd>Every patch was measured in the running game. An x64 emulator runs each one through every path, and the generator breaks the assembly 47 ways and fails if any broken patch still passes. On the Steam Workshop.</dd>
         <dt>Not yet</dt><dd>A cannon won't fire almost straight along its own wall. The AI is allowed to use walls, but in both tests it kept its guns on the ground.</dd>
@@ -102,7 +106,7 @@
     <article class="project" id="hashut-legendary-lords">
       <h2>Hashut's Legendary Lords: the tools</h2>
       <p>The build and audit tools behind a Chaos Dwarf mod that gives each house its own legendary lords, a fifth tier for the Tower of Zharr, a naval horde, and 46 alternative victory routes across 13 houses. The repo holds the tools; the mod itself is on the Workshop.</p>
-      <p class="facts">38 Python tools, about 17,000 lines · the mod: 152 DB tables, 77 Lua scripts</p>
+      <p class="facts">38&nbsp;Python tools, about 17,000&nbsp;lines · the mod: 152&nbsp;DB tables, 77&nbsp;Lua scripts</p>
       <dl class="ledger">
         <dt class="done">Checked</dt><dd>The generated victory-route script runs under Lua 5.1.5 against a stubbed campaign, and 13 mutants each break one line of it and have to be caught.</dd>
       </dl>
