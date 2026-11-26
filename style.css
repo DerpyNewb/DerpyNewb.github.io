@@ -9,7 +9,7 @@
 body { margin: 0; background: var(--paper); color: var(--ink); font: 18px/1.6 var(--sans); }
 a { color: var(--accent); text-underline-offset: 3px; }
 a:hover { text-decoration-thickness: 2px; }
-a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
 .vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .wrap {
   max-width: 1180px; margin: 0 auto; padding-block: 56px 64px;
@@ -75,19 +75,6 @@ section { margin-top: 72px; }
 /* A canvas too wide for half the card (Inbox triage's 16 nodes in a row) runs across the whole width, text below. */
 .featured .card.wide { grid-template-columns: minmax(0, 1fr); }
 .featured .card.wide .pic { min-height: 0; aspect-ratio: auto; border-right: 0; border-bottom: 1px solid var(--line); }
-
-/* The ledger folded under each card. Filled square checked, hollow square not yet. */
-details { border-top: 1px solid var(--line); margin-top: 6px; padding-top: 4px; font-size: 15px; }
-summary { cursor: pointer; padding-block: 10px; color: var(--muted); list-style: none; display: flex; gap: 10px; align-items: center; }
-summary::-webkit-details-marker { display: none; }
-summary::after { content: "+"; margin-left: auto; font-size: 18px; line-height: 1; }
-details[open] summary::after { content: "\2212"; }
-.marks { display: inline-flex; gap: 4px; }
-.marks i { width: 9px; height: 9px; border: 1.5px solid var(--accent); }
-.marks i.done { background: var(--accent); }
-details dl { display: grid; gap: 4px; margin: 4px 0 6px; }
-details dt { font-weight: 600; }
-details dd { margin: 0 0 8px; max-width: 62ch; }
 
 /* Mod names on the main page, each linking to its entry on mods.html. */
 .modlist { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 20px; margin: 0; padding: 0;
