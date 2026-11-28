@@ -4,126 +4,169 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Yohann Mar Gayao, projects</title>
-<meta name="description" content="Data, automation and QA tools, AI video ads and explainer videos cut by code, by Yohann Mar Gayao, with Total War: WARHAMMER III mods on their own page.">
+<meta name="description" content="AI, automation, data and QA tools, videos made with code, and resumes to download, by Yohann Mar Gayao, with Total War: WARHAMMER III mods on their own page.">
 <link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 <div class="wrap">
-<header class="top">
+<div class="bar">
+  <a class="brand" href="#top">Yohann Mar Gayao</a>
+  <nav aria-label="On this page"><a href="#start">Start here</a><a href="#resumes">Resumes</a><a href="#tools">Tools</a><a href="#video">AI video ads</a><a href="#mods">Total War mods</a></nav>
+</div>
+
+<header class="top" id="top">
   <div>
     <h1>Yohann Mar Gayao</h1>
     <p class="tagline">Data, automation and QA tools, and videos made with code.</p>
-    <p class="role">Looking for data analyst, junior Java/SQL developer, and AI or prompt engineering roles.</p>
-  </div>
-  <div>
-    <ul class="contact">
+    <p class="role">Open to AI engineering, AI automation, game and XR development, AI video, data analysis and QA roles, working remotely from Baguio City, Philippines.</p>
+    <ul class="reach">
       <li><a href="mailto:yohanng500@gmail.com">yohanng500@gmail.com</a></li>
       <li><a href="https://github.com/DerpyNewb">github.com/DerpyNewb</a></li>
-      <li>Baguio City, Philippines</li>
+      <li><a href="#resumes">Download a resume</a></li>
     </ul>
-    <nav aria-label="On this page"><a href="#tools">Tools</a><a href="#video">AI video ads</a><a href="#mods">Total War mods</a></nav>
   </div>
+  <nav class="index" aria-label="Three to look at first">
+    <p>Three to look at first</p>
+    <ol>
+      <li><a href="#late-trip"><span class="n">1</span><b>Late-trip monitor</b><span>A live demo you can try</span></a></li>
+      <li><a href="#video-editing"><span class="n">2</span><b>Programmatic video editing</b><span>Seventeen videos cut by code</span></a></li>
+      <li><a href="#inbox-triage"><span class="n">3</span><b>Inbox triage</b><span>One workflow run on sample mail</span></a></li>
+    </ol>
+  </nav>
 </header>
 
 <main>
-<section aria-labelledby="start-title">
-  <div class="head"><h2 id="start-title">Start here</h2><p>The three projects to look at first: one live demo, sixteen videos and one workflow run on sample mail.</p></div>
-  <div class="featured">
-    <article class="card">
-      <div class="pic ui"><img src="img/late-trip.webp" width="580" height="350" alt="The demo at 08:20 in the sample shift. One trip needs attention because its driver has gone quiet."></div>
-      <div class="body">
-        <h3>Late-trip monitor</h3>
-        <p class="say">Warns a medical-transport dispatch desk when a pickup is at risk, late, or the driver has gone quiet. A quiet driver is never reported as late.</p>
-        <p class="facts">Python standard library, SQLite, plain JavaScript</p>
-        <p class="links"><a href="https://derpynewb.github.io/late-trip-monitor/">Try the demo<span class="vh">: Late-trip monitor</span></a><a href="https://youtu.be/g_FwG51fp8w">Watch the demo video<span class="vh">: Late-trip monitor</span></a><a href="https://github.com/DerpyNewb/late-trip-monitor">Source on GitHub<span class="vh">: Late-trip monitor</span></a></p>
-      </div>
-    </article>
-    <article class="card">
-      <div class="pic"><img src="img/manila.webp" width="1080" height="608" alt="Manila in 3D during the 1945 battle: Intramuros, labelled, glows with fires under amber stripes marking Japanese-held ground, and the Pasig runs beside it."></div>
-      <div class="body">
-        <h3>Programmatic video editing</h3>
-        <p class="say">Sixteen narrated explainers with no AI video. Code places every cut and graphic by the narrator's word timings. Eleven battles are animated in Blender and Unreal Engine, and the five in 3D come first: Manila and Baguio are built from the cities' OpenStreetMap buildings, with the ground each side held tinted from the Army's maps. Two company histories, of SM and Jollibee, fly over today's Metro Manila in 3D, and both also come as vertical Shorts.</p>
-        <p class="facts">Python, Manim, FFmpeg, Blender, Unreal Engine, Remotion</p>
-        <p class="links"><a href="https://derpynewb.github.io/programmatic-video-editing/">Watch the sixteen videos</a><a href="https://github.com/DerpyNewb/programmatic-video-editing">Source on GitHub<span class="vh">: Programmatic video editing</span></a></p>
-      </div>
-    </article>
-    <article class="card wide">
-      <figure class="pic ui"><img src="img/inbox-triage.webp" width="3400" height="490" alt="The inbox triage workflow on the n8n canvas, from Run now to Finish run."><figcaption>The demo run in n8n: two mailboxes of sample emails merge, are sorted and redacted, go to Gemini, and reach Update tracker.</figcaption></figure>
-      <div class="body">
+<section id="start" aria-labelledby="start-title" style="margin-top: 56px">
+  <div class="head"><h2 id="start-title">Start here</h2><p>Each one in three steps.</p></div>
+
+  <article class="case" id="late-trip">
+    <div class="shot ui"><img src="img/late-trip.webp" width="580" height="350" alt="The demo at 08:20 in the sample shift. One trip needs attention because its driver has gone quiet."></div>
+    <div class="txt">
+      <h3>Late-trip monitor</h3>
+      <p class="say">Warns a medical-transport dispatch desk when a pickup is at risk, late, or the driver has gone quiet.</p>
+      <ol class="steps">
+        <li><span class="n">1</span><span>Compares each driver's ETA with the pickup window.</span></li>
+        <li><span class="n">2</span><span>Raises one alert per trip for each kind of problem.</span></li>
+        <li><span class="n">3</span><span>Counts a quiet driver as unknown, never as late.</span></li>
+      </ol>
+      <ul class="stack"><li>Python</li><li>SQLite</li><li>JavaScript</li></ul>
+      <p class="links"><a href="https://derpynewb.github.io/late-trip-monitor/">Try the demo<span class="vh">: Late-trip monitor</span></a><a href="https://youtu.be/g_FwG51fp8w">Watch the demo video<span class="vh">: Late-trip monitor</span></a><a href="https://github.com/DerpyNewb/late-trip-monitor">Source on GitHub<span class="vh">: Late-trip monitor</span></a></p>
+    </div>
+  </article>
+
+  <article class="case flip" id="video-editing">
+    <div class="shot"><img src="img/manila.webp" width="1080" height="608" alt="Manila in 3D during the 1945 battle: Intramuros, labelled, glows with fires under amber stripes marking Japanese-held ground, and the Pasig runs beside it."></div>
+    <div class="txt">
+      <h3>Programmatic video editing</h3>
+      <p class="say">Seventeen narrated explainers with no AI video. Eleven battles and three company histories are animated in Blender and Unreal Engine, and three are cut from footage.</p>
+      <ol class="steps">
+        <li><span class="n">1</span><span>Gemini TTS reads the script in one take.</span></li>
+        <li><span class="n">2</span><span>faster-whisper times every word.</span></li>
+        <li><span class="n">3</span><span>Code places each cut 0.12 seconds before its phrase.</span></li>
+      </ol>
+      <ul class="stack"><li>Python</li><li>Blender</li><li>Unreal Engine</li><li>FFmpeg</li><li>Manim</li></ul>
+      <p class="links"><a href="https://derpynewb.github.io/programmatic-video-editing/">Watch the seventeen videos</a><a href="https://github.com/DerpyNewb/programmatic-video-editing">Source on GitHub<span class="vh">: Programmatic video editing</span></a></p>
+    </div>
+  </article>
+
+  <article class="case wide" id="inbox-triage">
+    <figure class="shot ui"><img src="img/inbox-triage.webp" width="3400" height="490" alt="The inbox triage workflow on the n8n canvas, from Run now to Finish run."><figcaption>The demo run in n8n: two mailboxes of sample emails merge, are sorted and redacted, go to Gemini, and reach Update tracker.</figcaption></figure>
+    <div class="txt">
+      <div>
         <h3>Inbox triage</h3>
-        <p class="say">An n8n workflow built to read a job seeker's Gmail twice a day and keep a job tracker up to date. Anything uncertain goes to a review list.</p>
-        <p class="facts">n8n, Gemini, Node.js standard library</p>
-        <p class="links"><a href="https://youtu.be/6HLKQQUJvLs">Watch the demo video<span class="vh">: Inbox triage</span></a><a href="https://github.com/DerpyNewb/inbox-triage">Source on GitHub<span class="vh">: Inbox triage</span></a></p>
+        <p class="say">An n8n workflow built to read a job seeker's Gmail twice a day and keep a job tracker up to date.</p>
+        <ul class="stack"><li>n8n</li><li>Gemini</li><li>Node.js</li></ul>
       </div>
-    </article>
-  </div>
+      <ol class="steps">
+        <li><span class="n">1</span><span>Reads two Gmail inboxes twice a day.</span></li>
+        <li><span class="n">2</span><span>Gemini sorts the job mail.</span></li>
+        <li><span class="n">3</span><span>Updates the tracker and sends anything uncertain to a review list.</span></li>
+      </ol>
+      <p class="links"><a href="https://youtu.be/6HLKQQUJvLs">Watch the demo video<span class="vh">: Inbox triage</span></a><a href="https://github.com/DerpyNewb/inbox-triage">Source on GitHub<span class="vh">: Inbox triage</span></a></p>
+    </div>
+  </article>
+</section>
+
+<section id="resumes" aria-labelledby="resumes-title">
+  <div class="head"><h2 id="resumes-title">Resumes</h2><p>One page each, as PDFs. Pick the one closest to the role.</p></div>
+  <ul class="resumes">
+    <li><h3>General</h3><p>Software developer building AI integrations, XR simulations, Python pipelines and open-source QA tools.</p><a href="resumes/Yohann_Mar_Gayao_Resume.pdf" download>Download<span class="vh"> the general resume</span><span class="facts">PDF</span></a></li>
+    <li><h3>AI engineer</h3><p>Building applications with the Gemini and Claude APIs.</p><a href="resumes/Yohann_Mar_Gayao_Resume_AI_Engineer.pdf" download>Download<span class="vh"> the AI engineer resume</span><span class="facts">PDF</span></a></li>
+    <li><h3>AI agent engineer</h3><p>Live voice agents with tool calls and access controls.</p><a href="resumes/Yohann_Mar_Gayao_Resume_AI_Agent_Engineer.pdf" download>Download<span class="vh"> the AI agent engineer resume</span><span class="facts">PDF</span></a></li>
+    <li><h3>AI automation</h3><p>Workflows in Python, n8n, Claude Code and LLM APIs that check model output before acting on it.</p><a href="resumes/Yohann_Mar_Gayao_Resume_AI_Automation.pdf" download>Download<span class="vh"> the AI automation resume</span><span class="facts">PDF</span></a></li>
+    <li><h3>Game and XR developer</h3><p>Unity, Unreal Engine 5, C# and Lua, from XR training mechanics to game mods.</p><a href="resumes/Yohann_Mar_Gayao_Resume_Game_XR_Developer.pdf" download>Download<span class="vh"> the game and XR developer resume</span><span class="facts">PDF</span></a></li>
+    <li><h3>AI video</h3><p>AI spec ads and Reels, and history videos animated without AI video.</p><a href="resumes/Yohann_Mar_Gayao_Resume_AI_Video.pdf" download>Download<span class="vh"> the AI video resume</span><span class="facts">PDF</span></a></li>
+    <li><h3>Data analyst</h3><p>SQL and Python to process data and report findings.</p><a href="resumes/Yohann_Mar_Gayao_Resume_Data_Analyst.pdf" download>Download<span class="vh"> the data analyst resume</span><span class="facts">PDF</span></a></li>
+    <li><h3>QA, gameplay and data</h3><p>Game QA and automated testing, from Lua test harnesses to gameplay-video checks.</p><a href="resumes/Yohann_Mar_Gayao_Resume_QA.pdf" download>Download<span class="vh"> the QA resume</span><span class="facts">PDF</span></a></li>
+  </ul>
 </section>
 
 <section id="tools" aria-labelledby="tools-title">
   <div class="head"><h2 id="tools-title">More tools</h2><p>Data, automation and desktop tools.</p></div>
-  <div class="cards pics">
-    <article class="card">
-      <div class="pic ui"><img src="img/dashboard.webp" loading="lazy" width="720" height="450" alt="Open, urgent and overdue counts above the maintenance queue."></div>
-      <div class="body"><h3>Business operations dashboard</h3>
+  <div class="rows">
+    <article class="mini">
+      <div class="th"><img src="img/dashboard.webp" loading="lazy" width="720" height="450" alt="Open, urgent and overdue counts above the maintenance queue."></div>
+      <div class="txt"><h3>Business operations dashboard</h3>
         <p>Turns a made-up property manager's CSV exports into one dashboard for maintenance, leasing and finance.</p>
-        <p class="facts">Python standard library, SQLite, plain JavaScript</p>
+        <ul class="stack"><li>Python</li><li>SQLite</li><li>JavaScript</li></ul>
         <p class="links"><a href="https://youtu.be/l6K9MAj0voo">Watch the demo video<span class="vh">: Business operations dashboard</span></a><a href="https://github.com/DerpyNewb/business-operations-dashboard">Source on GitHub<span class="vh">: Business operations dashboard</span></a></p></div>
     </article>
-    <article class="card">
-      <div class="pic ui"><img src="img/job-tracker.webp" loading="lazy" width="720" height="450" alt="The tracker with a list of applications and a follow-up column showing four that need attention."></div>
-      <div class="body"><h3>Job tracker</h3>
+    <article class="mini">
+      <div class="th"><img src="img/job-tracker.webp" loading="lazy" width="720" height="450" alt="The tracker with a list of applications and a follow-up column showing four that need attention."></div>
+      <div class="txt"><h3>Job tracker</h3>
         <p>A Windows app that keeps a job-application log in an Excel workbook and puts follow-ups first.</p>
-        <p class="facts">Rust, egui</p>
+        <ul class="stack"><li>Rust</li><li>egui</li></ul>
         <p class="links"><a href="https://github.com/DerpyNewb/job-tracker/releases/latest">Download<span class="vh">: Job tracker</span></a><a href="https://github.com/DerpyNewb/job-tracker">Source on GitHub<span class="vh">: Job tracker</span></a></p></div>
     </article>
-    <article class="card">
-      <div class="pic ui"><img src="img/n8n.webp" loading="lazy" width="850" height="320" alt="The workflow on the n8n canvas: form, fetch, clean, extract fields, validate, then append to the tracker or log the failure."></div>
-      <div class="body"><h3>Job posting triage in n8n</h3>
-        <p>Paste a job link, and Gemini pulls out the company, role, salary and requirements into a Google Sheet.</p>
-        <p class="facts">n8n, Gemini, Google Sheets</p>
+    <article class="mini">
+      <div class="th"><img src="img/n8n.webp" loading="lazy" width="850" height="320" alt="The workflow on the n8n canvas: form, fetch, clean, extract fields, validate, then append to the tracker or log the failure."></div>
+      <div class="txt"><h3>Job posting triage in n8n</h3>
+        <p>Paste a job link, and Gemini pulls the company, role, salary and requirements into a Google Sheet.</p>
+        <ul class="stack"><li>n8n</li><li>Gemini</li><li>Google Sheets</li></ul>
         <p class="links"><a href="https://youtu.be/S-9qHvaUG3E">Watch the demo video<span class="vh">: Job posting triage</span></a><a href="https://github.com/DerpyNewb/automation-portfolio">Source on GitHub<span class="vh">: Job posting triage</span></a></p></div>
     </article>
-    <article class="card">
-      <div class="pic ui"><img src="img/calculator.webp" loading="lazy" width="322" height="492" alt="The calculator showing 12+4 = 16."></div>
-      <div class="body"><h3>Rust calculator</h3>
+    <article class="mini">
+      <div class="th"><img src="img/calculator.webp" loading="lazy" width="322" height="492" alt="The calculator showing 12+4 = 16."></div>
+      <div class="txt"><h3>Rust calculator</h3>
         <p>A desktop calculator with operator precedence, parentheses and negative numbers, shipped as one .exe.</p>
-        <p class="facts">Rust, egui</p>
+        <ul class="stack"><li>Rust</li><li>egui</li></ul>
         <p class="links"><a href="https://github.com/DerpyNewb/rust-calculator/releases/latest">Download<span class="vh">: Rust calculator</span></a><a href="https://github.com/DerpyNewb/rust-calculator">Source on GitHub<span class="vh">: Rust calculator</span></a></p></div>
     </article>
   </div>
-  <div class="cards trio">
-    <article class="card"><div class="body"><h3>SQL Query Agent</h3>
-        <p>Ask a question about a demo database in plain English. Claude writes the SQL, a Cloudflare Worker blocks anything but SELECTs, and the query runs on D1.</p>
-        <p class="facts">Cloudflare Worker, D1, Claude API, SQL</p>
-        <p class="links"><a href="https://github.com/DerpyNewb/SQL-Agent-Demo">Source on GitHub<span class="vh">: SQL Query Agent</span></a></p></div>
+  <div class="rows trio">
+    <article class="mini"><div class="txt"><h3>SQL Query Agent</h3>
+      <p>Ask a question about a demo database in plain English. Claude writes the SQL, a Cloudflare Worker blocks anything but SELECTs, and the query runs on D1.</p>
+      <ul class="stack"><li>Cloudflare Worker</li><li>D1</li><li>Claude API</li><li>SQL</li></ul>
+      <p class="links"><a href="https://github.com/DerpyNewb/SQL-Agent-Demo">Source on GitHub<span class="vh">: SQL Query Agent</span></a></p></div>
     </article>
-    <article class="card"><div class="body"><h3>Gameplay video QA</h3>
-        <p>Measures freezes, black frames, scene cuts and brightness jumps on every frame of a gameplay recording, and checks that bug reports point at real evidence.</p>
-        <p class="facts">Python standard library, FFmpeg, MIT licence</p>
-        <p class="links"><a href="https://github.com/DerpyNewb/gameplay-video-qa">Source on GitHub<span class="vh">: Gameplay video QA</span></a></p></div>
+    <article class="mini"><div class="txt"><h3>Gameplay video QA</h3>
+      <p>Measures freezes, black frames, scene cuts and brightness jumps on every frame of a gameplay recording, and checks that bug reports point at real evidence.</p>
+      <ul class="stack"><li>Python</li><li>FFmpeg</li><li>MIT licence</li></ul>
+      <p class="links"><a href="https://github.com/DerpyNewb/gameplay-video-qa">Source on GitHub<span class="vh">: Gameplay video QA</span></a></p></div>
     </article>
-    <article class="card"><div class="body"><h3>Lead-to-CRM automation</h3>
-        <p>Lead handling for a made-up property manager. A person approves each AI assessment before the contact, task and email campaign go out.</p>
-        <p class="facts">Python standard library, SQLite, n8n, HubSpot and Instantly adapters</p>
-        <p class="links"><a href="https://youtu.be/FQTKF4tTyXI">Watch the demo video<span class="vh">: Lead-to-CRM automation</span></a><a href="https://github.com/DerpyNewb/lead-crm-automation">Source on GitHub<span class="vh">: Lead-to-CRM automation</span></a></p></div>
+    <article class="mini"><div class="txt"><h3>Lead-to-CRM automation</h3>
+      <p>Lead handling for a made-up property manager. A person approves each AI assessment before the contact, task and email campaign go out.</p>
+      <ul class="stack"><li>Python</li><li>SQLite</li><li>n8n</li><li>HubSpot and Instantly adapters</li></ul>
+      <p class="links"><a href="https://youtu.be/FQTKF4tTyXI">Watch the demo video<span class="vh">: Lead-to-CRM automation</span></a><a href="https://github.com/DerpyNewb/lead-crm-automation">Source on GitHub<span class="vh">: Lead-to-CRM automation</span></a></p></div>
     </article>
   </div>
 </section>
 
 <section id="video" aria-labelledby="video-title">
   <div class="head"><h2 id="video-title">AI video ads</h2><p>Every clip is AI-generated, people included. None of it is client work.</p></div>
-  <div class="featured">
-    <article class="card">
-      <div class="pic"><img src="img/mistline.webp" loading="lazy" width="1280" height="720" alt="Forested ridges above a sea of cloud at sunrise."></div>
-      <div class="body"><h3>Eight spec ads and five Reels</h3>
-      <p>Ads for brands that don't exist, in 16:9, 9:16 and 1:1, made with Google Veo, Gemini Omni and Flow Music and edited in DaVinci Resolve. The styles run from product shots to clay stop-motion and a 1990s TV spot.</p>
-      <p class="links"><a href="https://derpynewb.github.io/ai-video-ads/">Watch the ads and Reels</a><a href="https://github.com/DerpyNewb/ai-video-ads">Source on GitHub<span class="vh">: AI video ads</span></a></p></div>
-    </article>
-  </div>
+  <article class="case flip" style="padding-top: 0; border: 0">
+    <div class="shot"><img src="img/mistline.webp" loading="lazy" width="1280" height="720" alt="Forested ridges above a sea of cloud at sunrise."></div>
+    <div class="txt">
+      <h3>Eight spec ads and five Reels</h3>
+      <p class="say">Ads for brands that don't exist, in 16:9, 9:16 and 1:1, made with Google Veo, Gemini Omni and Flow Music and edited in DaVinci Resolve. The styles run from product shots to clay stop-motion and a 1990s TV spot.</p>
+      <p class="links"><a href="https://derpynewb.github.io/ai-video-ads/">Watch the ads and Reels</a><a href="https://github.com/DerpyNewb/ai-video-ads">Source on GitHub<span class="vh">: AI video ads</span></a></p>
+    </div>
+  </article>
 </section>
 
 <section id="mods" aria-labelledby="mods-title">
@@ -142,7 +185,7 @@
 </main>
 
 <footer>
-  <p>Updated 27 November 2026.</p>
+  <p>Updated 28 November 2026.</p>
   <ul class="contact">
     <li>Yohann Mar Gayao</li>
     <li><a href="mailto:yohanng500@gmail.com">yohanng500@gmail.com</a></li>
@@ -151,5 +194,22 @@
 </footer>
 
 </div>
+<script>
+const blocks = document.querySelectorAll('header.top > div > *, .index li, .head, .case, .resumes li, .mini, .modlist li');
+if ('IntersectionObserver' in window) {
+  const seen = new IntersectionObserver(entries => {
+    let i = 0;
+    for (const e of entries) {
+      if (!e.isIntersecting) continue;
+      e.target.style.setProperty('--d', Math.min(i++ * 60, 300) + 'ms');
+      e.target.classList.add('in');
+      seen.unobserve(e.target);
+    }
+  }, { rootMargin: '0px 0px -6% 0px' });
+  blocks.forEach(el => seen.observe(el));
+} else {
+  blocks.forEach(el => el.classList.add('in'));
+}
+</script>
 </body>
 </html>

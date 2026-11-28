@@ -1,7 +1,7 @@
 /* Direction and the reason for each choice: DESIGN.md. Shared by index.html and mods.html. */
 /* Night mode only (owner's call, 2026-11-22): the dark greys are the only theme. */
 :root {
-  --paper: #18191b; --card: #202124; --ink: #eff0f1; --muted: #a9adb3; --line: #3a3d42; --accent: #9db4ff;
+  --paper: #18191b; --card: #202124; --raise: #26282c; --ink: #eff0f1; --soft: #d4d6d9; --muted: #a9adb3; --line: #3a3d42; --accent: #9db4ff;
   --sans: "Source Sans 3", Corbel, "Segoe UI", system-ui, sans-serif;
   color-scheme: dark;
 }
@@ -12,75 +12,105 @@ a:hover { text-decoration-thickness: 2px; }
 a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
 .vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .wrap {
-  max-width: 1180px; margin: 0 auto; padding-block: 56px 64px;
+  max-width: 1180px; margin: 0 auto; padding-block: 0 64px;
   padding-left: max(16px, env(safe-area-inset-left, 0px));
   padding-right: max(16px, env(safe-area-inset-right, 0px));
 }
 h1, h2, h3 { font-weight: 600; margin: 0; text-wrap: balance; }
-h1 { font-size: clamp(40px, 6.5vw, 72px); line-height: 1.02; }
-h1.long { font-size: clamp(36px, 5vw, 56px); line-height: 1.05; }
+h1 { font-size: clamp(42px, 6vw, 72px); line-height: 1.02; font-weight: 700; }
+h1.long { font-size: clamp(36px, 5vw, 56px); line-height: 1.05; font-weight: 600; }
 h2 { font-size: clamp(26px, 3.2vw, 34px); line-height: 1.1; }
 h3, .project h2 { font-size: 21px; line-height: 1.25; }
 p, dd { margin: 0; text-wrap: pretty; }
-img { display: block; width: 100%; height: auto; }
+img { display: block; max-width: 100%; height: auto; }
 
-header { display: grid; gap: 18px; }
-.tagline { font-size: clamp(19px, 2vw, 22px); line-height: 1.45; max-width: 44ch; }
-.contact, .links, nav { display: flex; flex-wrap: wrap; gap: 0 22px; margin: 0; padding: 0; list-style: none;
+/* The bar of section links at the top of the main page. */
+.bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 24px; padding-block: 10px; border-bottom: 1px solid var(--line); }
+.bar .brand { color: var(--ink); text-decoration: none; font-weight: 600; padding-block: 12px; }
+.bar nav { display: flex; flex-wrap: wrap; gap: 0 22px; }
+.bar nav a { color: var(--muted); text-decoration: none; padding-block: 12px; font-size: 16px; }
+.bar nav a:hover { color: var(--ink); }
+
+header.top { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 24px 56px; align-items: end;
+  padding-block: 56px 40px; border-bottom: 1px solid var(--line); }
+.tagline { font-size: clamp(20px, 2vw, 23px); line-height: 1.4; margin-top: 16px; max-width: 40ch; }
+.role { color: var(--muted); margin-top: 10px; font-size: 17px; max-width: 52ch; }
+.contact, .links, header.top div > nav { display: flex; flex-wrap: wrap; gap: 0 22px; margin: 0; padding: 0; list-style: none;
   font-size: 15px; line-height: 1.5; color: var(--muted); }
 .contact li { display: flex; align-items: center; overflow-wrap: anywhere; }
-.contact a, .links a, nav a { display: inline-block; padding-block: 12px; }
+.contact a, .links a, header.top div > nav a { display: inline-block; padding-block: 11px; }
+header.top .contact { display: grid; gap: 0; }
+header.top div > nav { margin-top: 6px; padding-top: 4px; border-top: 1px solid var(--line); }
+.reach { display: flex; flex-wrap: wrap; gap: 0 22px; list-style: none; margin: 6px 0 0; padding: 0; font-size: 16px; }
+.reach a { display: inline-block; padding-block: 11px; }
 .facts { font-size: 15px; line-height: 1.5; color: var(--muted); font-variant-numeric: tabular-nums; }
 
-/* Main page header: the name and what the work is beside the contact details, in one band. */
-header.top { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 16px 56px; align-items: end;
-  padding-bottom: 32px; border-bottom: 1px solid var(--line); }
-header.top .tagline { margin-top: 16px; }
-header.top .role { margin-top: 10px; font-size: 17px; max-width: 48ch; }
-header.top .contact { display: grid; gap: 0; }
-header.top .contact a { padding-block: 11px; }
-header.top nav { margin-top: 6px; padding-top: 4px; border-top: 1px solid var(--line); }
+/* Start here, numbered: the three projects to look at first. */
+.index { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; }
+.index p { color: var(--muted); font-size: 15px; margin-bottom: 6px; }
+.index ol { list-style: none; margin: 0; padding: 0; }
+.index li + li { border-top: 1px solid var(--line); }
+.index a { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px 12px; padding: 10px 0; text-decoration: none; color: var(--ink); }
+.index b { font-weight: 600; }
+.index span:last-child { color: var(--muted); font-size: 15px; }
+.index a:hover b { text-decoration: underline; }
+.n { display: inline-grid; place-items: center; width: 30px; height: 28px; border: 2px solid var(--accent); border-radius: 4px; color: var(--accent); font-weight: 700; font-size: 14px; line-height: 1; }
+.index .n { grid-row: span 2; }
 
-section { margin-top: 72px; }
-.head { display: grid; gap: 8px; margin-bottom: 20px; }
-.head p { color: var(--muted); font-size: 15px; max-width: 62ch; }
+section { margin-top: 80px; }
+.head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 24px; margin-bottom: 20px; }
+.head p { color: var(--muted); font-size: 16px; max-width: 62ch; }
 
-/* Cards: the picture first, then one plain sentence, then the checks on request. */
-.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
-.cards + .cards { margin-top: 20px; }
-.cards.pics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; overflow: hidden;
-  display: grid; grid-template-rows: auto 1fr; font-size: 17px; }
-.card .pic { margin: 0; aspect-ratio: 16 / 10; background: var(--paper); border-bottom: 1px solid var(--line); overflow: hidden; }
-.card .pic img { width: 100%; height: 100%; object-fit: cover; object-position: top left; }
-/* Screenshots of light apps sit whole on the dark ground with a small radius, a little dimmed,
-   so they read as pictures of the app rather than white holes in the page. */
-.card .pic.ui { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 10px; padding: 16px; }
-.card .pic.ui img { width: auto; height: auto; max-width: 100%; max-height: 100%; border-radius: 4px; filter: brightness(.94); }
-.card .pic figcaption { font-size: 15px; font-style: italic; color: var(--muted); max-width: 62ch; align-self: start; }
-.card .body { padding: 18px 20px 20px; display: grid; gap: 10px; align-content: start; }
-.card .body p { max-width: 62ch; }
-.card .links { margin-top: 2px; }
-.card .links a { padding-block: 11px; }
+.stack { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0; padding: 0; }
+.stack li { font-size: 14px; line-height: 1; padding: 6px 10px; border-radius: 99px; background: var(--raise); color: var(--soft); }
 
-/* Start here: three wide cards, the work a hiring manager should see first. */
-.featured { display: grid; gap: 20px; }
-.featured .card { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); grid-template-rows: none; }
-.featured .card .pic { aspect-ratio: auto; height: 100%; min-height: 260px; border-bottom: 0; border-right: 1px solid var(--line); }
-.featured .card:nth-child(2) { grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); }
-.featured .card:nth-child(2) .pic { order: 2; border-right: 0; border-left: 1px solid var(--line); }
-.featured .body { padding: 28px; align-content: center; }
-.featured h3 { font-size: 26px; }
-.featured .say { font-size: 18px; }
-/* A canvas too wide for half the card (Inbox triage's 16 nodes in a row) runs across the whole width, text below. */
-.featured .card.wide { grid-template-columns: minmax(0, 1fr); }
-.featured .card.wide .pic { min-height: 0; aspect-ratio: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+/* A featured project: the picture beside its three steps, alternating sides. */
+.case { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 40px; align-items: center; padding-block: 40px; border-top: 1px solid var(--line); }
+.case:first-of-type { border-top: 0; padding-top: 8px; }
+.case.flip .shot { order: 2; }
+.shot { margin: 0; border-radius: 10px; overflow: hidden; background: #121314; border: 1px solid var(--line); }
+.shot img { width: 100%; }
+/* Screenshots of light apps sit whole on the dark ground, a little dimmed, so they read as pictures of the app. */
+.shot.ui { padding: 20px; display: grid; place-items: center; gap: 10px; }
+.shot.ui img { border-radius: 4px; filter: brightness(.94); }
+.shot figcaption { font-size: 15px; font-style: italic; color: var(--muted); justify-self: start; }
+.case .txt { display: grid; gap: 14px; align-content: start; }
+.case h3 { font-size: 30px; line-height: 1.15; }
+.case .say { font-size: 19px; color: var(--soft); }
+.steps { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 10px; }
+.steps li { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 12px; align-items: start; font-size: 17px; }
+/* A canvas too wide for half the row (Inbox triage's 16 nodes in a row) runs across the whole width, text below. */
+.case.wide { grid-template-columns: minmax(0, 1fr); }
+.case.wide .txt { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px 48px; }
+.case.wide .txt > :first-child { grid-row: span 3; display: grid; gap: 14px; align-content: start; }
+
+/* Resumes: one card per role, each a one-page PDF. */
+.resumes { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; list-style: none; margin: 0; padding: 0; }
+.resumes li { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: grid; gap: 8px; grid-template-rows: auto 1fr auto; }
+.resumes li:first-child { border-color: var(--accent); }
+.resumes h3 { font-size: 20px; }
+.resumes p { font-size: 15px; color: var(--soft); }
+.resumes a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; font-size: 16px; }
+.resumes .facts { font-weight: 400; margin-left: 6px; }
+
+/* More tools: picture cards two across, then the text-only ones three across. */
+.rows { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.rows + .rows { margin-top: 16px; }
+.rows.trio { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.mini { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px; align-items: start; }
+.trio .mini { grid-template-columns: minmax(0, 1fr); }
+.mini .th { margin: 0; aspect-ratio: 4 / 3; background: #121314; border-radius: 6px; display: grid; place-items: center; padding: 8px; overflow: hidden; }
+.mini .th img { max-height: 100%; width: auto; border-radius: 3px; filter: brightness(.94); }
+.mini .txt { display: grid; gap: 8px; }
+.mini h3 { font-size: 20px; }
+.mini p { font-size: 16px; color: var(--soft); }
+.mini .links { font-size: 15px; }
+.mini .links a { padding-block: 11px; }
 
 /* Mod names on the main page, each linking to its entry on mods.html. */
-.modlist { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 20px; margin: 0; padding: 0;
-  list-style: none; border-top: 1px solid var(--line); }
-.modlist li { border-bottom: 1px solid var(--line); }
-.modlist a { display: block; padding: 14px 0; }
+.modlist { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin: 0; padding: 0; }
+.modlist a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border: 1px solid var(--line); border-radius: 99px; color: var(--ink); text-decoration: none; font-size: 16px; }
+.modlist a:hover { border-color: var(--accent); color: var(--accent); }
 
 /* Mods page: the open ledger, a project per row. */
 .project { display: grid; gap: 14px; align-content: start; padding-block: 30px 34px; border-top: 1px solid var(--line); }
@@ -101,18 +131,40 @@ footer { margin-top: 80px; padding-top: 20px; border-top: 1px solid var(--line);
 footer p { padding-top: 12px; }
 
 @media (max-width: 960px) {
-  header.top, .mods, .featured .card, .featured .card:nth-child(2) { grid-template-columns: minmax(0, 1fr); }
-  .featured .card .pic, .featured .card:nth-child(2) .pic { order: 0; border: 0; border-bottom: 1px solid var(--line); min-height: 0; aspect-ratio: 16 / 10; }
-  .cards, .modlist { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .cards.trio { grid-template-columns: minmax(0, 1fr); }
+  header.top, .mods, .case, .case.wide .txt { grid-template-columns: minmax(0, 1fr); }
+  .case.flip .shot { order: 0; }
+  .case.wide .txt > :first-child { grid-row: auto; }
+  .rows, .rows.trio { grid-template-columns: minmax(0, 1fr); }
+  .resumes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 640px) {
   body { font-size: 17px; }
-  .wrap { padding-block: 36px 40px; }
+  header.top { padding-top: 36px; }
   section { margin-top: 56px; }
   .mods { margin-top: 40px; }
-  .cards, .cards.pics, .modlist { grid-template-columns: minmax(0, 1fr); }
-  .featured .body { padding: 20px; }
+  .case { padding-block: 28px; gap: 20px; }
+  .case h3 { font-size: 26px; }
+  .resumes { grid-template-columns: minmax(0, 1fr); }
   .ledger { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .ledger dd + dt { margin-top: 8px; }
+}
+@media (max-width: 520px) {
+  .mini { grid-template-columns: minmax(0, 1fr); }
+  .mini .th { aspect-ratio: 16 / 9; }
+}
+
+/* Motion (owner's ask, 2026-11-28): content rises in once as it scrolls into view, and cards answer the pointer.
+   The js class is set in the head, so nothing hides when scripts are off, and reduced motion keeps everything still. */
+:root { --ease: cubic-bezier(0.2, 0, 0, 1); --ease-in: cubic-bezier(0.05, 0.7, 0.1, 1); }
+@keyframes rise { from { opacity: 0; translate: 0 18px; } }
+.n, .mini, .resumes li, .modlist a, .shot img, .mini .th img { transition: transform .2s var(--ease), border-color .2s var(--ease), background-color .15s var(--ease), color .15s var(--ease); }
+.index a:hover .n { background: var(--accent); color: var(--paper); }
+.mini:hover, .resumes li:hover { border-color: #5b5f66; }
+@media (prefers-reduced-motion: no-preference) {
+  .js :is(header.top > div > *, .index li, .head, .case, .resumes li, .mini, .modlist li):not(.in) { opacity: 0; }
+  .js .in { animation: rise .55s var(--ease-in) var(--d, 0ms) backwards; }
+  .mini:hover, .resumes li:hover { transform: translateY(-3px); }
+  .shot img { transition-duration: .5s; }
+  .case:hover .shot img { transform: scale(1.02); }
+  .mini:hover .th img { transform: scale(1.05); }
 }
